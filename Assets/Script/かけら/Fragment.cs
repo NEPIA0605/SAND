@@ -14,18 +14,16 @@ public class Fragment : MonoBehaviour
     public GameObject playercontroler;
 
     // 変数宣言
-    public Vector3 FtStartPos;                   // かけらの初期位置
-    Vector3 SandDir;            // 流砂の流れている方向を保存する変数
-    Vector3 SandRot;                             // 流砂の角度を取って縦か横かを判断する
-    [SerializeField] Vector3 FragmentMoveFt;     // かけらに乗って一緒に移動
-    bool P_SandEnpflg;                           // プレイヤーの中砂の有無
-    [SerializeField] bool SandCol_X, SandCol_Y;                   // 横の流砂・縦の流砂に触れているかどうか
-    bool WallCol;                                // 壁に触れているかどうか
-    bool WallColFt;                              // 壁に触れているかけらかどうか
-    [SerializeField] bool Ft_Col;                                 // かけらに触れてるかどうか
-    bool RespawnFlg;                            // リスポーンに触れたかどうか
-
-    //GameObject obj;
+    public Vector3 FtStartPos;      // かけらの初期位置
+    Vector3 SandDir;                // 流砂の流れている方向を保存する変数
+    Vector3 SandRot;                // 流砂の角度を取って縦か横かを判断する
+    Vector3 FragmentMoveFt;         // かけらに乗って一緒に移動
+    bool P_SandEnpflg;              // プレイヤーの中砂の有無
+    bool SandCol_X, SandCol_Y;      // 横の流砂・縦の流砂に触れているかどうか
+    bool WallCol;                   // 壁に触れているかどうか
+    bool WallColFt;                 // 壁に触れているかけらかどうか
+    [SerializeField] bool Ft_Col;   // かけらに触れてるかどうか
+    bool RespawnFlg;                // リスポーンに触れたかどうか
 
     //サウンド用
     float time_SE;
@@ -59,7 +57,6 @@ public class Fragment : MonoBehaviour
         Ft_Col = false;
         RespawnFlg = false;
 
-        //obj = (GameObject)Resources.Load("Player_Broken");
 
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty(); ;
 
@@ -76,6 +73,7 @@ public class Fragment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // プレイヤーの中砂の有無を常にもってくる
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty();
 
@@ -90,33 +88,36 @@ public class Fragment : MonoBehaviour
         }
         else
         {
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+
             // 流砂に触れているときに少し下に力を加えることで流砂の影響を受けれるようにする
             if ((SandCol_X) || (SandCol_Y))
             {
                 this.transform.Translate(0.0f, -0.0001f, 0.0f);
             }
+
+
         }
+
 
         // 流砂が地面張られているときは重力をかける
         if (SandCol_X == true)
         {
             this.GetComponent<Rigidbody>().useGravity = true;
         }
+        else
+        {
+            this.transform.position += new Vector3(0.0f, 0.005f, 0.0f);
+        }
 
         // 流砂が壁に貼られているときは重力を切る
         if (SandCol_Y == true)
         {
             this.GetComponent<Rigidbody>().useGravity = false;
+
         }
 
 
-        //if(RespawnFlg == true)
-        //{
-        //    GameObject instance = (GameObject)Instantiate(obj,
-        //                                this.transform.position,
-        //                               Quaternion.identity);
-
-        //}
 
         //サウンド用
         //if (Player_Hit)
@@ -150,6 +151,7 @@ public class Fragment : MonoBehaviour
 
     }
 
+
     private void OnCollisionStay(Collision collision)
     {
         // 流砂の上にいるときに流砂の移動力を受け取る
@@ -160,20 +162,30 @@ public class Fragment : MonoBehaviour
 
             // 流砂の移動量を取得
             SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
+            SandMoveFtSp /= 50;
+
 
             // 流砂平面かどうか
             if (SandRot == new Vector3(0.0f, 0.0f, 0.0f))
             {
                 SandCol_X = true;
-                SandMoveFtSp /= 50;
                 this.transform.Translate(SandMoveFtSp);
+
             }
             // 流砂が平面じゃない
             else
             {
                 SandCol_Y = true;
-                SandMoveFtSp /= 50;
+                if (SandCol_X)
+                {
+                    if (SandMoveFtSp.y < 0.0f)
+                    {
+                        SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+                    }
+
+                }
                 this.transform.Translate(SandMoveFtSp);
+
             }
         }
 
@@ -199,6 +211,13 @@ public class Fragment : MonoBehaviour
             {
                 SandCol_Y = true;
                 SandMoveFtSp /= 50;
+                if (SandCol_X)
+                {
+                    if (SandMoveFtSp.y < 0.0f)
+                    {
+                        SandMoveFtSp.y = 0.0f;
+                    }
+                }
                 this.transform.Translate(SandMoveFtSp);
             }
         }
@@ -273,9 +292,11 @@ public class Fragment : MonoBehaviour
         if (other.gameObject.tag == "fallcol")
         {
             RespawnFlg = true;
+            FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
             this.transform.position = FtStartPos;
         }
     }
+
 
     private void OnCollisionExit(Collision collision)
     {
