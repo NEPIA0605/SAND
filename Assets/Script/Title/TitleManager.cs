@@ -63,7 +63,7 @@ public class TitleManager : MonoBehaviour
             }
             else if ((Input.GetAxisRaw("Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)))
             {
-                if ((Select < 4) && (!TITLE_Lag))
+                if ((Select < 3) && (!TITLE_Lag))
                 {
                     Debug.Log("タイトル傾けた");
 

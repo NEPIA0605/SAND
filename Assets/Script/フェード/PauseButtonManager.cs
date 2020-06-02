@@ -25,9 +25,9 @@ public class PauseButtonManager : MonoBehaviour
 
     float pause_select;
     float time_pause;
-    float time_pause_MAX = 30f;
+    float time_pause_MAX = 10f;
     float pause_se;
-    float pause_se_MAX = 30f;
+    float pause_se_MAX = 10f;
 
     float key_time;
     float button_time;
