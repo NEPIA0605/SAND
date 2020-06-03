@@ -3275,9 +3275,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playercontroler: {fileID: 0}
   FtStartPos: {x: 0, y: 0, z: 0}
-  FragmentMoveFt: {x: 0, y: 0, z: 0}
-  SandCol_X: 0
-  SandCol_Y: 0
   Ft_Col: 0
   SandMoveFtSp: {x: 0, y: 0, z: 0}
   clips: []
@@ -12328,6 +12325,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6307932564486734778, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_Text
+      value: Pause
+      objectReference: {fileID: 0}
     - target: {fileID: 6307932564615982252, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: button
@@ -12522,7 +12524,7 @@ PrefabInstance:
     - target: {fileID: 6307932565267377616, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: m_Text
-      value: "\u30B2\u30FC\u30E0\u3078\u3082\u3069\u308B"
+      value: "\u30B2\u30FC\u30E0\u3078\u3082\u3069\u308B!?"
       objectReference: {fileID: 0}
     - target: {fileID: 6307932565434914667, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
@@ -12832,7 +12834,7 @@ PrefabInstance:
     - target: {fileID: 7816779724232572090, guid: b7736fce52851094ea3d221c9d99fdf5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7736fce52851094ea3d221c9d99fdf5, type: 3}
