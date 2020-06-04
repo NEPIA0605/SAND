@@ -99,9 +99,9 @@ public class Fragment : MonoBehaviour
 
         }
 
-        if(Player_Hit && !SandCol_X && !SandCol_Y)
+        if(Player_Hit)
         {
-            this.transform.position += new Vector3(0.0f, 0.005f, 0.0f);
+            this.transform.position += new Vector3(0.0f, 0.011f, 0.0f);
         }
 
         // 流砂が地面張られているときは重力をかける
