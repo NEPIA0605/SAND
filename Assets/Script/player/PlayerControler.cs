@@ -32,6 +32,8 @@ public class PlayerControler : MonoBehaviour
     Vector3 SandSptmp;
 
     GameObject obj; //壊れるモデル
+    GameObject DustParticle; //砂埃パーティクル
+
     public Vector3 PlayerMoveFt;        // かけらの上にいるときの変数
     public bool Wall_Col;               // 壁に触れているかどうか
     public bool FtCol;                  // かけらにふれているかどうか
@@ -106,6 +108,8 @@ public class PlayerControler : MonoBehaviour
         PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
         Wall_Col = false;
         FtCol = false;
+        DustParticle = GameObject.Find("DustParticle");
+        DustParticle.gameObject.SetActive(false);
 
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
@@ -874,5 +878,25 @@ public class PlayerControler : MonoBehaviour
     public void PlaySE_Time()
     {
         Source.PlayOneShot(clips[2]);
+    }
+
+    //パーティクル作成
+    public void ParticleCleate()
+    {
+        if (PlayerXSandFlg == true)
+        {
+            Debug.Log("パーティクル作成");
+
+            DustParticle.gameObject.SetActive(true);
+        }
+    }
+
+
+    //パーティクル削除
+    public void DestroyParticle()
+    {
+        Debug.Log("パーティクル削除");
+        DustParticle.gameObject.SetActive(false);
+
     }
 }
