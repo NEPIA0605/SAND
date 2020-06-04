@@ -21,9 +21,10 @@
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-			#pragma multi_compile_fwdbase nolightmap nodirlightmap nodynlightmap novertexlight
+			#pragma multi_compile_fwdbase
+			#pragma multi_compile_fwdadd
             // make fog work
-            #pragma multi_compile_fog
+            #pragma multi_compile FOG_EXP FOG_EXP2 FOG_LINEAR
 
             #include "UnityCG.cginc"
 			#include "Lighting.cginc" 
@@ -33,7 +34,7 @@
 
             struct appdata
             {
-                float4 vertex : POSITION;
+				float4 vertex : POSITION;
 				float3 normal : NORMAL;
                 float2 uv : TEXCOORD0;
             };
@@ -41,9 +42,9 @@
             struct v2f
             {
                 float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
 				fixed4 diff : COLOR0;
                 float4 pos : SV_POSITION;
+				UNITY_FOG_COORDS(1)
 				SHADOW_COORDS(1)
             };
 
@@ -66,7 +67,7 @@
 				o.diff = NdotL * _LightColor0;
 				TRANSFER_SHADOW(o)
 
-                UNITY_TRANSFER_FOG(o,o.vertex);
+                UNITY_TRANSFER_FOG(o,o.pos);
                 return o;
             }
 

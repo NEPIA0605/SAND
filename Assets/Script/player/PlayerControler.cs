@@ -32,6 +32,8 @@ public class PlayerControler : MonoBehaviour
     Vector3 SandSptmp;
 
     GameObject obj; //壊れるモデル
+    GameObject DustParticle; //砂埃パーティクル
+
     public Vector3 PlayerMoveFt;        // かけらの上にいるときの変数
     public bool Wall_Col;               // 壁に触れているかどうか
     public bool FtCol;                  // かけらにふれているかどうか
@@ -106,6 +108,8 @@ public class PlayerControler : MonoBehaviour
         PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
         Wall_Col = false;
         FtCol = false;
+        DustParticle = GameObject.Find("DustParticle");
+        DustParticle.gameObject.SetActive(false);
 
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
@@ -126,6 +130,14 @@ public class PlayerControler : MonoBehaviour
         {
             return;
         }
+
+        if (Mathf.Approximately(Time.timeScale, 0f) || ClearFlg == true) //時間が止まっていたら、Update処理をしない処理
+        {
+            animator.SetBool("Run", false);
+            return;
+        }
+
+
 
         //入力処理
         inputHorizontal = Input.GetAxisRaw("Horizontal");
@@ -163,12 +175,6 @@ public class PlayerControler : MonoBehaviour
         //    return;
         //}
         //ポーズ画面とreadystartの時動かなくする処理
-        if (Mathf.Approximately(Time.timeScale, 0f) || ClearFlg == true) //時間が止まっていたら、Update処理をしない処理
-        {
-            animator.SetBool("Run", false);
-            return;
-        }
-
 
         //==================================================
         //ゲームオーバー処理
@@ -874,5 +880,25 @@ public class PlayerControler : MonoBehaviour
     public void PlaySE_Time()
     {
         Source.PlayOneShot(clips[2]);
+    }
+
+    //パーティクル作成
+    public void ParticleCleate()
+    {
+        if (PlayerXSandFlg == true)
+        {
+            Debug.Log("パーティクル作成");
+
+            DustParticle.gameObject.SetActive(true);
+        }
+    }
+
+
+    //パーティクル削除
+    public void DestroyParticle()
+    {
+        Debug.Log("パーティクル削除");
+        DustParticle.gameObject.SetActive(false);
+
     }
 }
