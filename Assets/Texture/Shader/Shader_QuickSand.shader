@@ -21,7 +21,8 @@
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-			#pragma multi_compile_fwdbase nolightmap nodirlightmap nodynlightmap novertexlight
+			#pragma multi_compile_fwdbase
+			#pragma multi_compile_fwdadd
             // make fog work
             #pragma multi_compile FOG_EXP FOG_EXP2 FOG_LINEAR
 
