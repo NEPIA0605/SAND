@@ -99,16 +99,17 @@ public class Fragment : MonoBehaviour
 
         }
 
+        if(Player_Hit)
+        {
+            this.transform.position += new Vector3(0.0f, 0.011f, 0.0f);
+        }
 
         // 流砂が地面張られているときは重力をかける
         if (SandCol_X == true)
         {
             this.GetComponent<Rigidbody>().useGravity = true;
         }
-        else
-        {
-            this.transform.position += new Vector3(0.0f, 0.005f, 0.0f);
-        }
+
 
         // 流砂が壁に貼られているときは重力を切る
         if (SandCol_Y == true)
