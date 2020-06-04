@@ -131,6 +131,14 @@ public class PlayerControler : MonoBehaviour
             return;
         }
 
+        if (Mathf.Approximately(Time.timeScale, 0f) || ClearFlg == true) //時間が止まっていたら、Update処理をしない処理
+        {
+            animator.SetBool("Run", false);
+            return;
+        }
+
+
+
         //入力処理
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
@@ -167,12 +175,6 @@ public class PlayerControler : MonoBehaviour
         //    return;
         //}
         //ポーズ画面とreadystartの時動かなくする処理
-        if (Mathf.Approximately(Time.timeScale, 0f) || ClearFlg == true) //時間が止まっていたら、Update処理をしない処理
-        {
-            animator.SetBool("Run", false);
-            return;
-        }
-
 
         //==================================================
         //ゲームオーバー処理
