@@ -12,7 +12,7 @@
     {
 		Tags { "RenderType" = "Opaque"}
 		LOD 100
-		Cull off
+		//Cull off
 
         Pass
         {
@@ -21,12 +21,13 @@
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-			#pragma multi_compile_fwdbase
-			#pragma multi_compile_fwdadd
+			#pragma multi_compile_fwdbase /*nolightmap nodirlightmap nodynlightmap novertexlight*/
+			//#pragma multi_compile_fwdadd
             // make fog work
             #pragma multi_compile FOG_EXP FOG_EXP2 FOG_LINEAR
 
             #include "UnityCG.cginc"
+			#include "UnityLightingCommon.cginc"
 			#include "Lighting.cginc" 
 			#include "AutoLight.cginc"
 
@@ -37,6 +38,7 @@
 				float4 vertex : POSITION;
 				float3 normal : NORMAL;
                 float2 uv : TEXCOORD0;
+				//float2 texcoord : TEXCOORD0;
             };
 
             struct v2f
@@ -61,6 +63,7 @@
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				//o.uv = v.texcoord;
 
 				half3 worldNormal = UnityObjectToWorldNormal(v.normal);
 				half NdotL = saturate(dot(worldNormal, _WorldSpaceLightPos0.xyz));
@@ -83,8 +86,6 @@
 				//中心を起点としてUVを回転させる
 				i.uv = mul(i.uv - 0.5f, RotateMatrix) + 0.5f;
 
-				//ここまででUV座標を計算した
-
 				//角度で向きを決め、スピードでスクロール速度を決めてy方向でスクロール
 				//あとは色。書くのも一つの手。
 
@@ -93,6 +94,7 @@
 					i.uv.y += (_Speed * 0.075f) * _Time.y;
 				}
 
+				//ここまででUV座標を計算した
                 fixed4 col = tex2D(_MainTex, i.uv);
 
 				fixed4 shadow = SHADOW_ATTENUATION(i) * 1.3f;
