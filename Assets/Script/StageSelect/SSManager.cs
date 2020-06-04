@@ -22,6 +22,7 @@ public class SSManager : MonoBehaviour
     public Button WSBackButton;     //戻る
 
     public Text StageNameText;      //ステージ名表示テキスト
+    public Text StageNumText;       //ステージID表示テキスト
 
     private FadeManager FadeObj;    //フェードオブジェクト
 
@@ -81,7 +82,8 @@ public class SSManager : MonoBehaviour
         SSCM.transform.position = stages[NowSelStage].transform.position;
 
         //ステージ名設定
-        StageNameText.text = "Stage " + WorldNum.ToString() + " - " + (NowSelStage + 1).ToString() + "\n" + stages[NowSelStage].GetComponent<StaUnl>().GetStageName();
+        StageNumText.text = WorldNum.ToString() + " - " + (NowSelStage + 1).ToString();
+        StageNameText.text = stages[NowSelStage].GetComponent<StaUnl>().GetStageName();
 
         //サウンド
         Source = GetComponent<AudioSource>();
@@ -215,8 +217,8 @@ public class SSManager : MonoBehaviour
     public void SetNowSelStage(int WorNo)
     {
         NowSelStage = NowSelStage + WorNo;
-        StageNameText.text = "Stage " + WorldNum.ToString() + " - " + (NowSelStage + 1).ToString() + "\n" + 
-                            stages[NowSelStage].GetComponent<StaUnl>().GetStageName();
+        StageNumText.text = WorldNum.ToString() + " ー " + (NowSelStage + 1).ToString();
+        StageNameText.text = stages[NowSelStage].GetComponent<StaUnl>().GetStageName();
     }
 
     //次のステージのGetter
