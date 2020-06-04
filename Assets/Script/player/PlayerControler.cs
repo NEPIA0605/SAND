@@ -807,8 +807,13 @@ public class PlayerControler : MonoBehaviour
         //高いところから落ちたとき
         if (PlayerOldVelocity <= FallDeathPos)
         {
-            GameOverAnimFlg = true;
-            GameOverFlg = true;
+
+            if (collision.gameObject.tag == "Block" || PlayerXSandFlg == true || collision.gameObject.tag == "Fragment") {
+                {
+                    GameOverAnimFlg = true;
+                    GameOverFlg = true;
+                }
+            }
         }
     }
 
