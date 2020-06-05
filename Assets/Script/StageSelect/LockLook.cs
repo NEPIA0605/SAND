@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class LockLook : MonoBehaviour
 {
     //定数定義
@@ -13,11 +15,19 @@ public class LockLook : MonoBehaviour
     public int WorldNo;     //ワールドNo
 
     private bool FirstFlg;
+    
+    //サウンド用
+    [SerializeField] AudioClip[] clips;
+
+    //SEです。
+    protected AudioSource Source;
+
 
     // Start is called before the first frame update
     void Start()
     {
         FirstFlg = true;
+        Source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,6 +51,7 @@ public class LockLook : MonoBehaviour
     public void LockMove()
     {
         Locks[WorldNo].GetComponent<Animator>().Play("ChainMove");
+        Source.PlayOneShot(clips[0]);
     }
 
     //WorldNumのSetter
