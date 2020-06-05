@@ -72,6 +72,9 @@ public class RupeeAnimControler : MonoBehaviour
             {
                 this.gameObject.SetActive(false);
             }
+
+            //回す
+            this.transform.eulerAngles += new Vector3(0.0f, 10.0f,0.0f); 
         }
     
     
