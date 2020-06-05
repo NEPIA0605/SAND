@@ -23,6 +23,7 @@ public class WSManager : MonoBehaviour
     public Button OkButton;         //決定
     public Button GoBackButton;     //戻る
 
+    public Text WorldNumText;       //ワールドNo表示テキスト
     public Text WorldNameText;      //ワールド名表示テキスト
 
     private FadeManager FadeObj; //フェードオブジェクト
@@ -72,7 +73,8 @@ public class WSManager : MonoBehaviour
         worlds[0].GetComponent<WorUnl>().SetUnlockFlg(true);
 
         //ワールド名設定
-        WorldNameText.text = "World-" + (NowSelWorld + 1).ToString() + "\n" + worlds[NowSelWorld].GetComponent<WorUnl>().GetWorldName();
+        WorldNumText.text = "World-" + (NowSelWorld + 1).ToString();
+        WorldNameText.text = worlds[NowSelWorld].GetComponent<WorUnl>().GetWorldName();
 
         //サウンド
         Source = GetComponent<AudioSource>();
@@ -121,6 +123,25 @@ public class WSManager : MonoBehaviour
                 Debug.Log("b!");
                 GoBackButton.onClick.Invoke();
             }
+        }
+
+        //端っこの時に左右のボタンを消す
+        if (NowSelWorld == FIRST_WORLD)
+        {
+            PrevAllow.gameObject.SetActive(false);
+        }
+        else
+        {
+            PrevAllow.gameObject.SetActive(true);
+        }
+
+        if (NowSelWorld == LAST_WORLD)
+        {
+            NextAllow.gameObject.SetActive(false);
+        }
+        else
+        {
+            NextAllow.gameObject.SetActive(true);
         }
     }
 
@@ -178,7 +199,9 @@ public class WSManager : MonoBehaviour
     public void SetNowSelWorld(int WorNo)
     {
         NowSelWorld = NowSelWorld + WorNo;
-        WorldNameText.text = "World-" + (NowSelWorld + 1).ToString() + "\n" + worlds[NowSelWorld].GetComponent<WorUnl>().GetWorldName();
+        //ワールド名設定
+        WorldNumText.text = "World-" + (NowSelWorld + 1).ToString();
+        WorldNameText.text = worlds[NowSelWorld].GetComponent<WorUnl>().GetWorldName();
     }
 
     //次のワールドのGetter
@@ -197,7 +220,6 @@ public class WSManager : MonoBehaviour
         }
         else
         {
-            //ここに「まだ解放されていません」的なのを出す処理を書く予定
             return false;
         }
     }
