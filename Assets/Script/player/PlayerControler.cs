@@ -253,7 +253,14 @@ public class PlayerControler : MonoBehaviour
                 //中砂が入っている時
                 if (PlayerEnptyFlg == false)
                 {
-                    //Y軸に力がかかっている時
+                    //Y軸に下力がかかっている時
+                    if (SandMoveSp.y != 0 && !PlayerXSandFlg)
+                    {
+                        this.GetComponent<Rigidbody>().useGravity = false;
+                        rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+                        PlayerYSandAddFlg = false;
+                    }
+                    //Y軸に上力がかかっている時
                     if (SandMoveSp.y != 0 && !PlayerXSandFlg)
                     {
                         this.GetComponent<Rigidbody>().useGravity = false;
@@ -272,7 +279,6 @@ public class PlayerControler : MonoBehaviour
                     
                         this.GetComponent<Rigidbody>().useGravity = false;
                         rb.velocity =　PlayerDir * PlayerSp + SandMoveSp;
-                        PlayerYSandAddFlg = false;
                     }
                 }
                 //中砂が入っていないとき
@@ -290,7 +296,7 @@ public class PlayerControler : MonoBehaviour
             //
             if (PlayerYSandAddFlg == true && PlayerYSandFlg && PlayerXSandFlg && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
             {
-                rb.velocity = new Vector3(0, 10, 0);
+                rb.velocity = new Vector3(0, 5, 0);
                 PlayerYSandAddFlg = false;
             }
             //y軸に力がかかっている時
@@ -421,10 +427,12 @@ public class PlayerControler : MonoBehaviour
 
         if (PlayerVeloFlg == true)
         {
+            Debug.Log("ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ");
+
             rb.velocity = new Vector3(0, 10, 0);
             PlayerMovevelo++;
         }
-        if (PlayerMovevelo >= 90)
+        if (PlayerMovevelo >= 30)
         {
             PlayerVeloFlg = false;
             PlayerMovevelo = 0;
@@ -705,7 +713,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.gameObject.tag == "Clear")
         {
-            ClearFlg = false;
+            //ClearFlg = false;
         }
         if (collision.gameObject.tag == "Wall")
         {
@@ -799,8 +807,13 @@ public class PlayerControler : MonoBehaviour
         //高いところから落ちたとき
         if (PlayerOldVelocity <= FallDeathPos)
         {
-            GameOverAnimFlg = true;
-            GameOverFlg = true;
+
+            if (collision.gameObject.tag == "Block" || PlayerXSandFlg == true || collision.gameObject.tag == "Fragment") {
+                {
+                    GameOverAnimFlg = true;
+                    GameOverFlg = true;
+                }
+            }
         }
     }
 

@@ -15,8 +15,8 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
-  m_FogMode: 1
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
+  m_FogMode: 3
   m_FogDensity: 0.2
   m_LinearFogStart: 0
   m_LinearFogEnd: 98.89
@@ -2343,7 +2343,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2389,7 +2389,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: NaN, z: 5.72e-43, w: -3.0530786e-32}
+  m_BoundingSphereOverride: {x: -1.7014118e+38, y: 0, z: 0, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -5214,7 +5214,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0bf8468e0b295444fbc89046ff081913, type: 2}
+  - {fileID: 2100000, guid: a0b000e57de6e0d479e35a57296a006f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6397,12 +6397,12 @@ PrefabInstance:
     - target: {fileID: 2602479727975021590, guid: 9fc4ed3be9e17ab47a16029ceb4b33c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.53
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 2602479727975021590, guid: 9fc4ed3be9e17ab47a16029ceb4b33c0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.71
+      value: 9.51
       objectReference: {fileID: 0}
     - target: {fileID: 2602479727975021590, guid: 9fc4ed3be9e17ab47a16029ceb4b33c0,
         type: 3}
@@ -6633,7 +6633,7 @@ PrefabInstance:
     - target: {fileID: 1259335353566775965, guid: e9919838445455b4db0766025ca8f513,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.01
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1259335353566775965, guid: e9919838445455b4db0766025ca8f513,
         type: 3}
@@ -7567,7 +7567,7 @@ PrefabInstance:
     - target: {fileID: 587065601527127320, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.36
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 587065601527127320, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
@@ -7710,44 +7710,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6307932564033440627, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_Text
-      value: "\u305D\u3046\u3055\u305B\u3064\u3081\u3044"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307932564033440627, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
-        type: 3}
-    - target: {fileID: 6307932564033440627, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307932564203745357, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_Text
-      value: "\u30AB\u30E1\u30E9\u3044\u3069\u3046"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307932564203745357, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
-        type: 3}
     - target: {fileID: 6307932564486734778, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: m_Text
-      value: "\u30DD\u30FC\u30BA"
+      value: Pause
       objectReference: {fileID: 0}
-    - target: {fileID: 6307932564486734778, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
-        type: 3}
     - target: {fileID: 6307932564615982252, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: button
@@ -7817,17 +7784,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ResetButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307932564881763977, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
-        type: 3}
-    - target: {fileID: 6307932564881763977, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_Text
-      value: "\u30AD\u30E3\u30F3\u30BB\u30EB\u30FB\u3082\u3069\u308B"
       objectReference: {fileID: 0}
     - target: {fileID: 6307932565259885189, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
@@ -7953,47 +7909,24 @@ PrefabInstance:
     - target: {fileID: 6307932565267377616, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: m_Text
-      value: "\u30B2\u30FC\u30E0\u3078\u3082\u3069\u308B"
+      value: "\u30B2\u30FC\u30E0\u3078\u3082\u3069\u308B!?"
       objectReference: {fileID: 0}
-    - target: {fileID: 6307932565412478931, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_Text
-      value: "\u3072\u3063\u304F\u308A\u304B\u3048\u308B\u30FB\u3051\u3063\u3066\u3044"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307932565412478931, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
-        type: 3}
     - target: {fileID: 6307932565434914667, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: m_Color.a
       value: 0.5019608
       objectReference: {fileID: 0}
-    - target: {fileID: 6307932565473884035, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
-        type: 3}
     - target: {fileID: 6307932565588496942, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
+      objectReference: {fileID: 12800000, guid: 0470619d9b9a3c0498268d4d885411e1,
         type: 3}
     - target: {fileID: 6307932565588496942, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: m_Text
       value: "\u30B9\u30C6\u30FC\u30B8\u305B\u3093\u305F\u304F\u3078"
       objectReference: {fileID: 0}
-    - target: {fileID: 6307932565660872810, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
-        type: 3}
     - target: {fileID: 6307932565661998148, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: button
@@ -8013,7 +7946,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
+      objectReference: {fileID: 12800000, guid: fd2e19d4130969349b3fe24902313440,
         type: 3}
     - target: {fileID: 6307932565846550145, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
@@ -8024,19 +7957,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
+      objectReference: {fileID: 12800000, guid: caa311b21424d6540b2cd3ec6b8cecd6,
         type: 3}
-    - target: {fileID: 6307932566031017607, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
-        type: 3}
-    - target: {fileID: 6307932566031017607, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_Text
-      value: "\u3044\u3069\u3046\u30FB\u305B\u3093\u305F\u304F"
-      objectReference: {fileID: 0}
     - target: {fileID: 6307932566032844380, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: button
@@ -8297,7 +8219,7 @@ PrefabInstance:
     - target: {fileID: 7816779724232572090, guid: b7736fce52851094ea3d221c9d99fdf5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7736fce52851094ea3d221c9d99fdf5, type: 3}
