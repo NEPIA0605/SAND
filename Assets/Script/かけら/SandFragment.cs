@@ -59,7 +59,11 @@ public class SandFragment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetLocalGravity(); //重力をAddForceでかけるメソッドを呼ぶ。
+        if(SandCol_Y==false)
+        {
+            SetLocalGravity(); //重力をAddForceでかけるメソッドを呼ぶ。
+
+        }
 
 
         // プレイヤーの中砂の有無を常にもってくる
