@@ -40,7 +40,7 @@ public class RupeeAnimControler : MonoBehaviour
         {
             if (this.transform.localPosition.y <= 0.1f)
             {
-                this.transform.position += new Vector3(0.0f, 0.02f, 0.0f);
+                this.transform.position += new Vector3(0.0f, 0.05f, 0.0f);
             }
             RupeeAnimTime += Time.deltaTime;
         }
@@ -49,7 +49,7 @@ public class RupeeAnimControler : MonoBehaviour
         {
             p0 = Rupee.transform.position;
             p1 = (Rupee.transform.position + PlayerObg.transform.position) / 2;
-            p1.y += Rupee.transform.position.y - 0.1f;
+            p1.y = p1.y + 5.0f;
             p2 = PlayerObg.transform.position;
             RupeeAnimFlg = false;
             RupeePosSetFlg = true;
