@@ -4591,7 +4591,7 @@ PrefabInstance:
     - target: {fileID: 1180596182330621196, guid: 50adfa63f35af764d9a3d708b438bb7d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50
+      value: 49.93
       objectReference: {fileID: 0}
     - target: {fileID: 1180596182330621196, guid: 50adfa63f35af764d9a3d708b438bb7d,
         type: 3}
@@ -4621,7 +4621,7 @@ PrefabInstance:
     - target: {fileID: 1180596182330621196, guid: 50adfa63f35af764d9a3d708b438bb7d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 1180596182330621196, guid: 50adfa63f35af764d9a3d708b438bb7d,
         type: 3}
@@ -4642,6 +4642,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cube (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966080432781902309, guid: 50adfa63f35af764d9a3d708b438bb7d,
+        type: 3}
+      propertyPath: m_TagString
+      value: VerticalQuickSand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50adfa63f35af764d9a3d708b438bb7d, type: 3}
@@ -6298,6 +6303,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cube (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966080432781902309, guid: 50adfa63f35af764d9a3d708b438bb7d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50adfa63f35af764d9a3d708b438bb7d, type: 3}
@@ -9494,7 +9504,7 @@ PrefabInstance:
     - target: {fileID: 8945232372142028574, guid: e44e62e5ff51aab4dbccedd483346d46,
         type: 3}
       propertyPath: FlowingSandSpd
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44e62e5ff51aab4dbccedd483346d46, type: 3}
@@ -13474,6 +13484,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cube (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966080432781902309, guid: 50adfa63f35af764d9a3d708b438bb7d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50adfa63f35af764d9a3d708b438bb7d, type: 3}
@@ -22070,7 +22085,7 @@ PrefabInstance:
     - target: {fileID: 8945232372142028574, guid: e44e62e5ff51aab4dbccedd483346d46,
         type: 3}
       propertyPath: FlowingSandSpd
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44e62e5ff51aab4dbccedd483346d46, type: 3}
@@ -24087,6 +24102,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cube (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966080432781902309, guid: 50adfa63f35af764d9a3d708b438bb7d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50adfa63f35af764d9a3d708b438bb7d, type: 3}
@@ -28934,6 +28954,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (67)
       objectReference: {fileID: 0}
+    - target: {fileID: 1966080432781902309, guid: 50adfa63f35af764d9a3d708b438bb7d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50adfa63f35af764d9a3d708b438bb7d, type: 3}
 --- !u!1001 &1447012617
@@ -33530,7 +33555,7 @@ PrefabInstance:
     - target: {fileID: 8945232372142028574, guid: e44e62e5ff51aab4dbccedd483346d46,
         type: 3}
       propertyPath: FlowingSandSpd
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44e62e5ff51aab4dbccedd483346d46, type: 3}
@@ -35123,7 +35148,7 @@ PrefabInstance:
     - target: {fileID: 8945232372142028574, guid: e44e62e5ff51aab4dbccedd483346d46,
         type: 3}
       propertyPath: FlowingSandSpd
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44e62e5ff51aab4dbccedd483346d46, type: 3}
@@ -37481,10 +37506,10 @@ Transform:
   - {fileID: 1985557872}
   - {fileID: 672879077}
   - {fileID: 872650334}
+  - {fileID: 796239557}
   - {fileID: 176805463}
   - {fileID: 954978428}
   - {fileID: 1575204490}
-  - {fileID: 796239557}
   - {fileID: 1855859341}
   - {fileID: 1507987399}
   - {fileID: 1892162062}
@@ -38321,7 +38346,7 @@ PrefabInstance:
     - target: {fileID: 8945232372142028574, guid: e44e62e5ff51aab4dbccedd483346d46,
         type: 3}
       propertyPath: FlowingSandSpd
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44e62e5ff51aab4dbccedd483346d46, type: 3}
@@ -38421,7 +38446,7 @@ PrefabInstance:
     - target: {fileID: 8945232372142028574, guid: e44e62e5ff51aab4dbccedd483346d46,
         type: 3}
       propertyPath: FlowingSandSpd
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44e62e5ff51aab4dbccedd483346d46, type: 3}
@@ -43626,7 +43651,7 @@ PrefabInstance:
     - target: {fileID: 8945232372142028574, guid: e44e62e5ff51aab4dbccedd483346d46,
         type: 3}
       propertyPath: FlowingSandSpd
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44e62e5ff51aab4dbccedd483346d46, type: 3}

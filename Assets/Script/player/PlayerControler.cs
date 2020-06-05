@@ -424,7 +424,7 @@ public class PlayerControler : MonoBehaviour
             GameOverFlg = true;
         }
 
-        
+
         if (PlayerVeloFlg == true)
         {
             Debug.Log("ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ");
