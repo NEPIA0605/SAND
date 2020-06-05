@@ -161,18 +161,29 @@ public class OptionManager : MonoBehaviour
                 case OPT_BGM:
                     if (RightInputFlg == true)
                     {
+                        float BGM_vol;
+                        BGM_vol = (float)PlayerPrefs.GetInt("VOLUME_BGM", 5);
+                        if (BGM_vol < 10)
+                        {
+                            Source.PlayOneShot(clips[0]);
+                        }
                         //音量上げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolUp();
                         bgm.BGMVolChange();
-                        Source.PlayOneShot(clips[0]);
                         RightInputFlg = false;
                     }
                     else if (LeftInputFlg == true)
                     {
+                        float BGM_vol_Left;
+                        BGM_vol_Left = (float)PlayerPrefs.GetInt("VOLUME_BGM", 5);
+                        if (BGM_vol_Left > 1)
+                        {
+                            Source.PlayOneShot(clips[0]);
+                        }
                         //音量下げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolDown();
                         bgm.BGMVolChange();
-                        Source.PlayOneShot(clips[0]);
+                        //Source.PlayOneShot(clips[0]);
                         LeftInputFlg = false;
                     }
 
@@ -181,21 +192,33 @@ public class OptionManager : MonoBehaviour
                 case OPT_SE:
                     if (RightInputFlg == true)
                     {
+                        float SE_vol;
+                        SE_vol = (float)PlayerPrefs.GetInt("VOLUME_SE", 5);
+                        if (SE_vol < 10)
+                        {
+                            Source.PlayOneShot(clips[0]);
+                        }
                         //音量上げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolUp();
                         se1.SEVolChange();
                         se2.SEVolChange();
-                        Source.PlayOneShot(clips[0]);
+                        //Source.PlayOneShot(clips[0]);
                         RightInputFlg = false;
 
                     }
                     else if (LeftInputFlg == true)
                     {
+                        float SE_vol;
+                        SE_vol = (float)PlayerPrefs.GetInt("VOLUME_SE", 5);
+                        if (SE_vol > 1)
+                        {
+                            Source.PlayOneShot(clips[0]);
+                        }
                         //音量下げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolDown();
                         se1.SEVolChange();
                         se2.SEVolChange();
-                        Source.PlayOneShot(clips[0]);
+                        //Source.PlayOneShot(clips[0]);
                         LeftInputFlg = false;
 
                     }
@@ -211,7 +234,7 @@ public class OptionManager : MonoBehaviour
                         //決定
                         option[NowSelOpt].GetComponent<HowToChange>().HowToOpen();
                     }
-                    else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1") )
+                    else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
                     {
                         if (!time)
                         {
