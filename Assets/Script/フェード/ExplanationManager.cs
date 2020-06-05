@@ -15,7 +15,7 @@ public class ExplanationManager : MonoBehaviour
     protected AudioSource Source;
 
     float Exit_Time;
-    float Exit_MAX = 6f;
+    float Exit_MAX = 20f;
     bool Exit_check;
 
     // Start is called before the first frame update
@@ -33,6 +33,7 @@ public class ExplanationManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick button 1"))
         {
             Debug.Log("B!");
+            Source.PlayOneShot(clips[0]);
             Exit_check = true;
         }
         if (Exit_check)
@@ -40,8 +41,11 @@ public class ExplanationManager : MonoBehaviour
             Exit_Time++;
             if (Exit_Time > Exit_MAX)
             {
-                ExplanationObj.SetActive(false);
+                Exit_Time = 0;
+
                 Exit_check = false;
+
+                ExplanationObj.SetActive(false);
             }
         }
     }

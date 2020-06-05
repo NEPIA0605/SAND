@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 
-public class PauseButtonManager : MonoBehaviour
+public class Restart : MonoBehaviour
 {
     private GameObject FadeObj; //フェードのパネル
     public GameObject pauseObj;
@@ -89,53 +89,53 @@ public class PauseButtonManager : MonoBehaviour
             }
         }
 
-        //キー操作で操作できるようにする
-        if ((Input.GetAxisRaw("Vertical") > 0) || (Input.GetKeyDown(KeyCode.UpArrow)) && !ExplanationObj.activeSelf)
-        {
-            if (!time_p)
-            {
-                Debug.Log("動いてる？");
-                //pause_select -= 1;
-                //カーソル選択音
-                Source.PlayOneShot(clips[0]);
-                time_p = true;
-                stick = true;
-            }
+        ////キー操作で操作できるようにする
+        //if ((Input.GetAxisRaw("Vertical") > 0) || (Input.GetKeyDown(KeyCode.UpArrow)) && !ExplanationObj)
+        //{
+        //    if (!time_p)
+        //    {
+        //        Debug.Log("動いてる？");
+        //        //pause_select -= 1;
+        //        //カーソル選択音
+        //        Source.PlayOneShot(clips[0]);
+        //        time_p = true;
+        //        stick = true;
+        //    }
 
-        }
-        else if ((Input.GetAxisRaw("Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)) && !ExplanationObj.activeSelf)
-        {
-            if (!time_p)
-            {
-                //pause_select += 1;
-                //カーソル選択音
-                Source.PlayOneShot(clips[0]);
-                time_p = true;
-                stick = true;
-            }
-        }
-        else
-        {
-            stick = false;
-        }
+        //}
+        //else if ((Input.GetAxisRaw("Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)) && !ExplanationObj)
+        //{
+        //    if (!time_p)
+        //    {
+        //        //pause_select += 1;
+        //        //カーソル選択音
+        //        Source.PlayOneShot(clips[0]);
+        //        time_p = true;
+        //        stick = true;
+        //    }
+        //}
+        //else
+        //{
+        //    stick = false;
+        //}
 
-        if (time_p)
-        {
-            key_time += 1;
-            time_pause = key_time;
-            if ((time_pause > time_pause_MAX) && (!stick))
-            {
-                key_time = 0;
-                time_pause = 0;
-                time_p = false;
-            }
-            else if ((time_pause > stick_se) && (stick))
-            {
-                key_time = 0;
-                time_pause = 0;
-                time_p = false;
-            }
-        }
+        //if (time_p)
+        //{
+        //    key_time += 1;
+        //    time_pause = key_time;
+        //    if ((time_pause > time_pause_MAX) && (!stick))
+        //    {
+        //        key_time = 0;
+        //        time_pause = 0;
+        //        time_p = false;
+        //    }
+        //    else if ((time_pause > stick_se) && (stick))
+        //    {
+        //        key_time = 0;
+        //        time_pause = 0;
+        //        time_p = false;
+        //    }
+        //}
 
 
         ////時間計測
@@ -158,12 +158,12 @@ public class PauseButtonManager : MonoBehaviour
         //    button_time += 1;
         //    pause_se = button_time;
         //}
-        ////やり直す
-        //else if ((pause_Return_S) && (!pause_Return_G) && (!pause_Return_St) && (!pause_Tori))
-        //{
-        //    button_time += 1;
-        //    pause_se = button_time;
-        //}
+        //やり直す
+        if ((pause_Return_S) && (!pause_Return_G) && (!pause_Return_St) && (!pause_Tori))
+        {
+            button_time += 1;
+            pause_se = button_time;
+        }
 
 
         ////消える
@@ -195,21 +195,21 @@ public class PauseButtonManager : MonoBehaviour
         //    //pauseObj.SetActive(false);
         //    ExplanationObj.SetActive(true);
         //}
-        ////やり直す
-        //else if ((pause_se > pause_se_MAX) && (pause_Return_S))
+        //やり直す
+        if ((pause_se > pause_se_MAX) && (pause_Return_S))
 
-        //{
-        //    button_time = 0;
-        //    pause_se = 0;
-        //    pause_Return_S = false;
-        //    pauseObj.SetActive(false);
+        {
+            button_time = 0;
+            pause_se = 0;
+            pause_Return_S = false;
+            pauseObj.SetActive(false);
 
-        //    // 現在のScene名を取得する
-        //    Scene loadScene = SceneManager.GetActiveScene();
-        //    // Sceneの読み直し
-        //    SceneManager.LoadScene(loadScene.name);
+            // 現在のScene名を取得する
+            Scene loadScene = SceneManager.GetActiveScene();
+            // Sceneの読み直し
+            SceneManager.LoadScene(loadScene.name);
 
-        //}
+        }
 
     }
 
@@ -278,46 +278,46 @@ public class PauseButtonManager : MonoBehaviour
     //    //    ExplanationObj.SetActive(true);
     //    //}
     //}
-    //public void ResetButton()
-    //{
-    //    //操作説明が出ていないとき
-    //    if (!ExplanationObj.activeSelf)
-    //    {
-    //        if ((!pause_Return_G) && (!pause_Return_St) && (!pause_Tori))
-    //        {
-    //            Source.PlayOneShot(clips[0]);
-    //            pause_Return_S = true;
-    //            Debug.Log("リセットボタン");
-    //            //pauseObj.SetActive(false);
+    public void ResetButton()
+    {
+        //操作説明が出ていないとき
+        if (!ExplanationObj.activeSelf)
+        {
+            if ((!pause_Return_G) && (!pause_Return_St) && (!pause_Tori))
+            {
+                Source.PlayOneShot(clips[0]);
+                pause_Return_S = true;
+                Debug.Log("リセットボタン");
+                //pauseObj.SetActive(false);
 
 
-    //            // 現在のScene名を取得する
-    //            //Scene loadScene = SceneManager.GetActiveScene();
-    //            // Sceneの読み直し
-    //            //SceneManager.LoadScene(loadScene.name);
-    //            //Debug.Log("ゲームに戻る");
-    //            //pauseObj.SetActive(false);
-    //        }
-    //        //// 現在のScene名を取得する
-    //        //Scene loadScene = SceneManager.GetActiveScene();
-    //        //// Sceneの読み直し
-    //        //SceneManager.LoadScene(loadScene.name);
-    //    }
+                // 現在のScene名を取得する
+                //Scene loadScene = SceneManager.GetActiveScene();
+                // Sceneの読み直し
+                //SceneManager.LoadScene(loadScene.name);
+                //Debug.Log("ゲームに戻る");
+                //pauseObj.SetActive(false);
+            }
+            //// 現在のScene名を取得する
+            //Scene loadScene = SceneManager.GetActiveScene();
+            //// Sceneの読み直し
+            //SceneManager.LoadScene(loadScene.name);
+        }
 
-    //    //操作説明が出ていないとき
-    //    //if (!ExplanationObj.activeSelf)
-    //    //{
-    //    //    Source.PlayOneShot(clips[0]);
+        //操作説明が出ていないとき
+        //if (!ExplanationObj.activeSelf)
+        //{
+        //    Source.PlayOneShot(clips[0]);
 
-    //    //    Debug.Log("リセットボタン");
-    //    //    pauseObj.SetActive(false);
+        //    Debug.Log("リセットボタン");
+        //    pauseObj.SetActive(false);
 
-    //    //    Source.PlayOneShot(clips[0]);
+        //    Source.PlayOneShot(clips[0]);
 
-    //    //    // 現在のScene名を取得する
-    //    //    Scene loadScene = SceneManager.GetActiveScene();
-    //    //    // Sceneの読み直し
-    //    //    SceneManager.LoadScene(loadScene.name);
-    //    //}
-    //}
+        //    // 現在のScene名を取得する
+        //    Scene loadScene = SceneManager.GetActiveScene();
+        //    // Sceneの読み直し
+        //    SceneManager.LoadScene(loadScene.name);
+        //}
+    }
 }

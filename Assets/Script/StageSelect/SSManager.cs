@@ -82,7 +82,7 @@ public class SSManager : MonoBehaviour
         SSCM.transform.position = stages[NowSelStage].transform.position;
 
         //ステージ名設定
-        StageNumText.text = WorldNum.ToString() + " - " + (NowSelStage + 1).ToString();
+        StageNumText.text = WorldNum.ToString() + " ー " + (NowSelStage + 1).ToString();
         StageNameText.text = stages[NowSelStage].GetComponent<StaUnl>().GetStageName();
 
         //サウンド
