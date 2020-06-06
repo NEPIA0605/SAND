@@ -102,7 +102,7 @@ public class OptionManager : MonoBehaviour
             if (option[OPT_HOWTO].GetComponent<HowToChange>().GetHowToFlg() == false)
             {
                 //キー操作で操作できるようにする
-                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Vertical") > 0)
+                if ((Input.GetAxisRaw("Vertical") > 0) || (Input.GetKeyDown(KeyCode.UpArrow)))
                 {
                     if (GetPrevOpt())
                     {
@@ -112,7 +112,7 @@ public class OptionManager : MonoBehaviour
                     //上へ
                     OpCM.GoPrev();
                 }
-                else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxisRaw("Vertical") < 0))
+                else if ((Input.GetAxisRaw("Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)))
                 {
                     if (GetNextOpt())
                     {
