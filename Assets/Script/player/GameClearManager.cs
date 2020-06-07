@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class GameClearManager : MonoBehaviour
 {
     GameObject PlayerObj;
@@ -12,6 +14,22 @@ public class GameClearManager : MonoBehaviour
     GameObject FadeObject;
 
     bool GameClearFlg;
+
+    [SerializeField] AudioClip[] clips;//サウンド
+
+    //SEです。
+    protected AudioSource Source;
+
+    bool stick_Clear;
+    bool time_Clear;
+    bool Next_Stage;
+    bool Stage_Select;
+
+    float stick_clear;
+    float time_clear;
+    float clear_Max = 0.5f;
+    float Stick_MAX = 0.125f;
+
     public Button button;
     bool ButtonSelectFlg;
     float ClearUITime; //クリアUIを出す時間測定
@@ -30,14 +48,22 @@ public class GameClearManager : MonoBehaviour
         ClearUITime = 0.0f;
         //button = GameObject.Find("NextStage").GetComponent<Button>();
 
+        //サウンド
+        Source = GetComponent<AudioSource>();
 
+        stick_clear = 0;
+        time_clear = 0;
+        Next_Stage = false;
+        Stage_Select = false;
+        time_Clear = false;
+        stick_Clear = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         GameClearFlg = PlayerObj.GetComponent<PlayerControler>().GetGameClearFlg();
-        if(GameClearFlg == true)
+        if (GameClearFlg == true)
         {
             if (ClearUITime < 4.5f)
             {
@@ -55,35 +81,107 @@ public class GameClearManager : MonoBehaviour
                     ButtonSelectFlg = true;
                 }
             }
+
         }
         else if (GameClearFlg == false)
         {
             ClearUI.SetActive(false);
+        }
+
+        if (ClearUI.activeSelf)
+        {
+            //キー操作で操作できるようにする
+            if ((Input.GetAxisRaw("Vertical") > 0) || (Input.GetKeyDown(KeyCode.UpArrow)))
+            {
+                if (!time_Clear)
+                {
+                    //Debug.Log("動いてる？");
+                    //カーソル選択音
+                    Source.PlayOneShot(clips[0]);
+                    time_Clear = true;
+                    stick_Clear = true;
+                }
+
+            }
+            else if ((Input.GetAxisRaw("Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)))
+            {
+                if (!time_Clear)
+                {
+                    //カーソル選択音
+                    Source.PlayOneShot(clips[0]);
+                    time_Clear = true;
+                    stick_Clear = true;
+                }
+            }
+            else
+            {
+                stick_Clear = false;
+            }
+
+            if (time_Clear)
+            {
+                //key_time += 1;
+                stick_clear += Time.deltaTime;
+                if ((stick_clear > Stick_MAX) && (!stick_Clear))
+                {
+                    stick_clear = 0;
+
+                    time_Clear = false;
+                }
+                else if ((stick_clear > Stick_MAX) && (stick_Clear))
+                {
+                    stick_clear = 0;
+
+                    time_Clear = false;
+                }
+            }
+
+            if (Next_Stage)
+            {
+                time_clear += Time.deltaTime;
+                if (time_clear > clear_Max)
+                {
+                    time_clear = 0;
+                    Debug.Log("次のステージへ");
+                    // 現在のScene名を取得する
+                    //Scene loadScene = SceneManager.GetActiveScene();
+                    int NextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+                    // Sceneの読み直し
+                    SceneManager.LoadScene(NextSceneIndex);
+                }
+            }
+            else if (Stage_Select)
+            {
+                time_clear += Time.deltaTime;
+                if (time_clear > clear_Max)
+                {
+                    time_clear = 0;
+
+                    Debug.Log("ステージ選択へ");
+
+                    FadeObject.GetComponent<FadeManager>().FadeScene(WorldID + 1);
+                }
+            }
         }
     }
 
 
     public void PushNextStageButton()
     {
-        Debug.Log("次のステージへ");
-        // 現在のScene名を取得する
-        //Scene loadScene = SceneManager.GetActiveScene();
-        int NextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-        // Sceneの読み直し
-        SceneManager.LoadScene(NextSceneIndex);
+        Next_Stage = true;
+        Source.PlayOneShot(clips[1]);
     }
     public void PushReturnStageSelectButton()
     {
-        Debug.Log("ステージ選択へ");
-
-        FadeObject.GetComponent<FadeManager>().FadeScene(WorldID + 1);
+        Stage_Select = true;
+        Source.PlayOneShot(clips[1]);
     }
 
     //ステージクリア処理
     public void StageClear()
     {
-        if(WorldID == 0 ||
+        if (WorldID == 0 ||
             StageID == 0)
         {
             Debug.Log("セーブ失敗しました(IDに問題あり)");
@@ -136,7 +234,7 @@ public class GameClearManager : MonoBehaviour
             WorldID = 0;
         }
 
-        if(StageID > 5)
+        if (StageID > 5)
         {
             StageID = 0;
         }
