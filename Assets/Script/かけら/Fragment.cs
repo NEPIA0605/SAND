@@ -34,6 +34,7 @@ public class Fragment : MonoBehaviour
 
     // 当たり判定
     Rigidbody rb;
+    [SerializeField] private Vector3 localGravity;      // 重力を与える向きと力の強さ？
 
     [SerializeField] public Vector3 SandMoveFtSp;  // 流砂の移動力
 
@@ -155,6 +156,11 @@ public class Fragment : MonoBehaviour
             SE_Lag = false;
         }
 
+    }
+
+    private void FixedUpdate()
+    {
+        SetLocalGravity(); //重力をAddForceでかけるメソッドを呼ぶ。
     }
 
 
@@ -352,6 +358,10 @@ public class Fragment : MonoBehaviour
         }
     }
 
+    private void SetLocalGravity()
+    {
+        rb.AddForce(localGravity, ForceMode.Acceleration);
+    }
 
 
     public Vector3 GetSandMoveFtSp()
