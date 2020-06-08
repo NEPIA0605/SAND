@@ -722,7 +722,8 @@ public class PlayerControler : MonoBehaviour
         if (collision.gameObject.tag == "Fragment")
         {
             FtCol = false;
-            PlayerMoveFt = new Vector3(0.0f,0.0f,0.0f);
+            PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+
         }
         if (collision.gameObject.tag == "Block")
         {

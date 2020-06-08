@@ -24,6 +24,7 @@ public class Fragment : MonoBehaviour
     bool WallColFt;                 // 壁に触れているかけらかどうか
     [SerializeField] bool Ft_Col;   // かけらに触れてるかどうか
     bool RespawnFlg;                // リスポーンに触れたかどうか
+    bool P_FtCol;                   // プレイヤーがかけらにふれてるかどうか
 
     //サウンド用
     float time_SE;
@@ -33,6 +34,7 @@ public class Fragment : MonoBehaviour
 
     // 当たり判定
     Rigidbody rb;
+    [SerializeField] private Vector3 localGravity;      // 重力を与える向きと力の強さ？
 
     [SerializeField] public Vector3 SandMoveFtSp;  // 流砂の移動力
 
@@ -56,7 +58,7 @@ public class Fragment : MonoBehaviour
         WallColFt = false;
         Ft_Col = false;
         RespawnFlg = false;
-
+        P_FtCol = false;
 
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty(); ;
 
@@ -76,6 +78,7 @@ public class Fragment : MonoBehaviour
 
         // プレイヤーの中砂の有無を常にもってくる
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty();
+        P_FtCol = playercontroler.GetComponent<PlayerControler>().GetFtCol();
 
         // 中砂がない時の処理
         if (P_SandEnpflg == true)
@@ -93,7 +96,10 @@ public class Fragment : MonoBehaviour
             // 流砂に触れているときに少し下に力を加えることで流砂の影響を受けれるようにする
             if ((SandCol_X) || (SandCol_Y))
             {
-                this.transform.Translate(0.0f, -0.0001f, 0.0f);
+                if(P_FtCol == false)
+                {
+                    this.transform.Translate(0.0f, -0.0001f, 0.0f);
+                }
             }
 
 
@@ -150,6 +156,11 @@ public class Fragment : MonoBehaviour
             SE_Lag = false;
         }
 
+    }
+
+    private void FixedUpdate()
+    {
+        SetLocalGravity(); //重力をAddForceでかけるメソッドを呼ぶ。
     }
 
 
@@ -347,6 +358,10 @@ public class Fragment : MonoBehaviour
         }
     }
 
+    private void SetLocalGravity()
+    {
+        rb.AddForce(localGravity, ForceMode.Acceleration);
+    }
 
 
     public Vector3 GetSandMoveFtSp()
