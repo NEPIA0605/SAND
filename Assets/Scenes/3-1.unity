@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 02c521b39cfb04b49872e1f2382c2d37, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d6439b79ae8230d4e9a339a8971bc6a9, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.27170664, g: 0.16708729, b: 0.04457716, a: 1}
+  m_IndirectSpecularColor: {r: 0.16605067, g: 0.10133342, b: 0.025095409, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1876,6 +1876,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spot Light (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 129843668569590463, guid: 907d8956bb718f94e855c91e643b67d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2711362210597240553, guid: 907d8956bb718f94e855c91e643b67d2,
         type: 3}
       propertyPath: m_Range
@@ -1979,7 +1984,7 @@ PrefabInstance:
     - target: {fileID: 2711362210597240553, guid: 907d8956bb718f94e855c91e643b67d2,
         type: 3}
       propertyPath: m_Intensity
-      value: 2.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2711362210597240553, guid: 907d8956bb718f94e855c91e643b67d2,
         type: 3}
@@ -2204,6 +2209,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spot Light (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 129843668569590463, guid: 907d8956bb718f94e855c91e643b67d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2711362210597240553, guid: 907d8956bb718f94e855c91e643b67d2,
         type: 3}
@@ -5483,7 +5493,7 @@ PrefabInstance:
     - target: {fileID: 3412203105019458093, guid: 1b977c703c31de549adec54ff6e1cc6a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 362.5377
+      value: 364.47
       objectReference: {fileID: 0}
     - target: {fileID: 3412203105019458093, guid: 1b977c703c31de549adec54ff6e1cc6a,
         type: 3}
@@ -7209,6 +7219,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spot Light (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 129843668569590463, guid: 907d8956bb718f94e855c91e643b67d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2711362210597240553, guid: 907d8956bb718f94e855c91e643b67d2,
         type: 3}
@@ -11270,6 +11285,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spot Light (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 129843668569590463, guid: 907d8956bb718f94e855c91e643b67d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2711362210597240553, guid: 907d8956bb718f94e855c91e643b67d2,
         type: 3}
       propertyPath: m_SpotAngle
@@ -11288,7 +11308,7 @@ PrefabInstance:
     - target: {fileID: 7533633175510538288, guid: 907d8956bb718f94e855c91e643b67d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 114.87454
+      value: 118.87454
       objectReference: {fileID: 0}
     - target: {fileID: 7533633175510538288, guid: 907d8956bb718f94e855c91e643b67d2,
         type: 3}
@@ -11298,7 +11318,7 @@ PrefabInstance:
     - target: {fileID: 7533633175510538288, guid: 907d8956bb718f94e855c91e643b67d2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 410.5077
+      value: 407.80768
       objectReference: {fileID: 0}
     - target: {fileID: 7533633175510538288, guid: 907d8956bb718f94e855c91e643b67d2,
         type: 3}
@@ -11339,6 +11359,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 183.639
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533633175510538288, guid: 907d8956bb718f94e855c91e643b67d2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533633175510538288, guid: 907d8956bb718f94e855c91e643b67d2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533633175510538288, guid: 907d8956bb718f94e855c91e643b67d2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 907d8956bb718f94e855c91e643b67d2, type: 3}
