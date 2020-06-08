@@ -201,7 +201,7 @@ public class OptionManager : MonoBehaviour
                         //音量上げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolUp();
                         se1.SEVolChange();
-                        se2.SEVolChange();
+                        //se2.SEVolChange();
                         //Source.PlayOneShot(clips[0]);
                         RightInputFlg = false;
 
@@ -217,7 +217,7 @@ public class OptionManager : MonoBehaviour
                         //音量下げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolDown();
                         se1.SEVolChange();
-                        se2.SEVolChange();
+                        //se2.SEVolChange();
                         //Source.PlayOneShot(clips[0]);
                         LeftInputFlg = false;
 
