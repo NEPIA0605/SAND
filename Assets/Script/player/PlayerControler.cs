@@ -45,6 +45,8 @@ public class PlayerControler : MonoBehaviour
     int PlayerMovevelo;
     bool PlayerVeloFlg;
 
+    float Turn;
+
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
     [SerializeField] bool CollisionGround;       //床に触れてるかどうか
 
@@ -92,7 +94,7 @@ public class PlayerControler : MonoBehaviour
         GameOverAnimFlg = false;
         PlayerFloatFlg = false;
         PlayerOldVelocity = 0.0f;
-        PlayerGravity = new Vector3(0.0f, -9.8f, 0.0f); 
+        PlayerGravity = new Vector3(0.0f, -9.8f, 0.0f);
         animator = GetComponent<Animator>();
         PlayerTurnAnimFlg = false;
         PlayerTurnAnimTime = 0.0f;
@@ -116,6 +118,8 @@ public class PlayerControler : MonoBehaviour
         this.transform.position = StartPlayerPos;
         this.transform.position += new Vector3(0, 5.0f, 0);
         rb = GetComponent<Rigidbody>();
+
+        Turn = 0;
 
         Source = GetComponent<AudioSource>();
     }
@@ -149,7 +153,7 @@ public class PlayerControler : MonoBehaviour
         Debug.Log("X:" + PlayerXSandFlg);
         //Debug.Log(rb.velocity);
 
-        
+
         //Debug.Log(PlayerTurnAnimTime);
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
@@ -220,7 +224,7 @@ public class PlayerControler : MonoBehaviour
         if (Input.GetAxisRaw("Vertical") != 0)
         {
             animator.SetBool("Run", true);
-           // Debug.Log("下");
+            // Debug.Log("下");
         }
         else
         {
@@ -276,9 +280,9 @@ public class PlayerControler : MonoBehaviour
                     //X軸に力がかかっている時
                     else if (PlayerYSandAddFlg == false && !PlayerXSandFlg && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
                     {
-                    
+
                         this.GetComponent<Rigidbody>().useGravity = false;
-                        rb.velocity =　PlayerDir * PlayerSp + SandMoveSp;
+                        rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
                     }
                 }
                 //中砂が入っていないとき
@@ -367,7 +371,7 @@ public class PlayerControler : MonoBehaviour
                 PlayerYSandAddFlg = false;
             }
             //X軸に力がかかっているかつ横流砂の時
-            else if (PlayerYSandAddFlg == false && PlayerXSandFlg　&& (SandMoveSp.x != 0 || SandMoveSp.z != 0))
+            else if (PlayerYSandAddFlg == false && PlayerXSandFlg && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
             {
 
                 this.GetComponent<Rigidbody>().useGravity = false;
@@ -450,9 +454,9 @@ public class PlayerControler : MonoBehaviour
                 //時間逆行から通常へ変換
                 if (PlayerTurn == true)
                 {
-
+                    Debug.Log("2");
                     animator.SetBool("Rot", true);
-
+                    Turn = 1;
                     PlayerEnptyFlg = false;
                     PlayerTurn = false;
                     PlayerSandNomalTime = PlayerTotalTime - PlayerSandBackTime; //通常の中砂 を すべての中砂 から 逆行の中砂 を引いた分にする
@@ -460,13 +464,14 @@ public class PlayerControler : MonoBehaviour
                 //通常から時間逆行へ変換
                 else
                 {
+                    Debug.Log("1");
+                    Turn = 0;
                     animator.SetBool("Rot", true);
 
                     PlayerEnptyFlg = false;
                     PlayerTurn = true;
                     PlayerSandBackTime = PlayerTotalTime - PlayerSandNomalTime;  //逆行の中砂 を 全ての中砂 から 逆行の中砂 を引いた分にする
                 }
-
             }
         }
 
@@ -477,7 +482,7 @@ public class PlayerControler : MonoBehaviour
             {
                 PlayerTurnAnimTime = 0.0f;
                 animator.SetBool("Rot", false);
-                
+
                 PlayerTurnAnimFlg = false;
             }
         }
@@ -809,7 +814,8 @@ public class PlayerControler : MonoBehaviour
         if (PlayerOldVelocity <= FallDeathPos)
         {
 
-            if (collision.gameObject.tag == "Block" || PlayerXSandFlg == true || collision.gameObject.tag == "Fragment") {
+            if (collision.gameObject.tag == "Block" || PlayerXSandFlg == true || collision.gameObject.tag == "Fragment")
+            {
                 {
                     GameOverAnimFlg = true;
                     GameOverFlg = true;
@@ -893,7 +899,14 @@ public class PlayerControler : MonoBehaviour
     //時間逆行
     public void PlaySE_Time()
     {
-        Source.PlayOneShot(clips[2]);
+        if (Turn == 0)
+        {
+            Source.PlayOneShot(clips[2]);
+        }
+        else
+        {
+            Source.PlayOneShot(clips[3]);
+        }
     }
 
     //パーティクル作成

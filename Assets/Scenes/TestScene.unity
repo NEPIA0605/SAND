@@ -3738,6 +3738,7 @@ MonoBehaviour:
   playercontroler: {fileID: 0}
   FtStartPos: {x: 0, y: 0, z: 0}
   Ft_Col: 0
+  localGravity: {x: 0, y: 0, z: 0}
   SandMoveFtSp: {x: 0, y: 0, z: 0}
   clips: []
 --- !u!65 &1030972717
@@ -6737,6 +6738,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fragment
       objectReference: {fileID: 0}
+    - target: {fileID: 6305399646874902036, guid: 4b331641e1340da4583c9a05eef2135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7050981472618736647, guid: 4b331641e1340da4583c9a05eef2135a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8264,9 +8270,24 @@ PrefabInstance:
       objectReference: {fileID: 4574916485393589468}
     - target: {fileID: 8292428205804466311, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
+      propertyPath: clips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292428205804466311, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
       propertyPath: PlayerSp
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8292428205804466311, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
+      propertyPath: clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: baa79169c2cb540488b426e76bb39d77, type: 3}
+    - target: {fileID: 8292428205804466311, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
+      propertyPath: clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2c76dd575517f1446b89971b95151d74, type: 3}
     - target: {fileID: 9051242879033351261, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 2602479727975021577}
   - component: {fileID: -2635279219636973275}
   - component: {fileID: -2925048759632612937}
+  - component: {fileID: 373208321042436751}
   m_Layer: 0
   m_Name: Treasurebox
   m_TagString: Clear
@@ -301,7 +302,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -386,6 +387,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &373208321042436751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2602479727975021578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d442a970e21d4b9bb1277da213411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SEAudioSource: {fileID: 0}
 --- !u!1001 &1480906762067026602
 PrefabInstance:
   m_ObjectHideFlags: 0
