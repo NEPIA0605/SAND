@@ -594,6 +594,47 @@ public class PlayerControler : MonoBehaviour
             Wall_Col = true;
         }
 
+        if(collision.gameObject.tag == "SandFragment")
+        {
+            FtCol = true;
+
+            // 流砂に触れていなくて押せないかけらに触れている時（乗り）
+            if (CollisionSand == false)
+            {
+                // 床・壁の砂に触れているかどうか
+                bool SFt_SandCol_X = collision.gameObject.GetComponent<SandFragment>().GetSftSandCol_Y();
+                bool SFt_SandCol_Y = collision.gameObject.GetComponent<SandFragment>().GetSftSandCol_Y();
+
+                // かけらが壁に触れているか
+                bool SFt_WallCol = collision.gameObject.GetComponent<SandFragment>().GetSft_WallCol();
+
+
+                // 床の流砂に流れてる欠片の処理
+                if (SFt_SandCol_X)
+                {
+                    PlayerMoveFt = collision.gameObject.GetComponent<SandFragment>().GetSandMoveSFtSp();
+                    PlayerMoveFt *= 50;
+
+                    // 壁に触れてるかけらに乗ってる時に流されないようにする処理
+                    if (SFt_WallCol)
+                    {
+                        PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+                    }
+                }
+
+                if (SFt_SandCol_Y)
+                {
+                    this.GetComponent<Rigidbody>().useGravity = false;
+                    if(PlayerMoveFt.y > 0)
+                    {
+                        PlayerMoveFt.y *= 2;
+                    }
+
+                }
+            }
+
+        }
+
         if (collision.gameObject.tag == "Fragment")
         {
             FtCol = true;
@@ -620,11 +661,14 @@ public class PlayerControler : MonoBehaviour
                     PlayerMoveFt *= 50;
 
                     // 壁の流砂・かけらが壁に触れてる・壁に触れてるかけらに乗ってる時に流されないようにする処理
-                    if ((Ft_SandCol_Y) || (Ft_WallCol) || Ft_WallColFt)
+                    if (/*(Ft_SandCol_Y) ||*/ (Ft_WallCol) || Ft_WallColFt)
                     {
                         PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
                     }
-                }
+                }  
+                
+
+
 
                 // かけらの上のかけらに乗っているときの処理
                 if (SandColFt)
@@ -637,6 +681,20 @@ public class PlayerControler : MonoBehaviour
                         PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
                     }
 
+
+                    //    if (collision.gameObject.tag == "MoveStage")
+                    //    {
+                    //        transform.SetParent(collision.transform);
+                    //    }
+                    
+
+                    //void OnCollisionExit(Collision col)
+                    //{
+                    //    if (col.gameObject.tag == "MoveStage")
+                    //    {
+                    //        transform.SetParent(null);
+                    //    }
+                    //}
                 }
             }
         }
@@ -728,6 +786,16 @@ public class PlayerControler : MonoBehaviour
         {
             FtCol = false;
             PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+
+            this.GetComponent<Rigidbody>().useGravity = true;
+
+        }
+        if (collision.gameObject.tag == "SandFragment")
+        {
+            FtCol = false;
+            PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+
+            this.GetComponent<Rigidbody>().useGravity = true;
 
         }
         if (collision.gameObject.tag == "Block")
