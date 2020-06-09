@@ -15,7 +15,11 @@ public class LockLook : MonoBehaviour
     public int WorldNo;     //ワールドNo
 
     private bool FirstFlg;
-    
+
+    float Lock_time;
+    float Lock_MAX = 0.65f;
+    bool Lock_flag;
+
     //サウンド用
     [SerializeField] AudioClip[] clips;
 
@@ -28,6 +32,9 @@ public class LockLook : MonoBehaviour
     {
         FirstFlg = true;
         Source = GetComponent<AudioSource>();
+
+        Lock_time = 0;
+        Lock_flag = false;
     }
 
     // Update is called once per frame
@@ -50,8 +57,23 @@ public class LockLook : MonoBehaviour
     //アニメーションさせる
     public void LockMove()
     {
-        Locks[WorldNo].GetComponent<Animator>().Play("ChainMove");
-        Source.PlayOneShot(clips[0]);
+        if (Lock_time == 0 && !Lock_flag)
+        {
+            Locks[WorldNo].GetComponent<Animator>().Play("ChainMove");
+
+            Source.PlayOneShot(clips[0]);
+            Lock_flag = true;
+        }
+        if (Lock_flag)
+        {
+            Lock_time += Time.deltaTime;
+            if(Lock_time > Lock_MAX)
+            {
+                Lock_time = 0;
+                Lock_flag = false;
+            }
+        }
+
     }
 
     //WorldNumのSetter
