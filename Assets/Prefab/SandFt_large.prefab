@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 706472988537011739}
   m_Layer: 0
   m_Name: SandFt_large
-  m_TagString: Fragment
+  m_TagString: SandFragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,9 +157,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playercontroler: {fileID: 0}
   FtStartPos: {x: 0, y: 0, z: 0}
-  P_FtColFrag: 0
-  P_WallCol: 0
-  Sft_WallCol: 0
+  SandDir: {x: 0, y: 0, z: 0}
+  SandCol_X: 0
+  SandCol_Y: 0
+  localGravity: {x: 0, y: 0, z: 0}
   SandMoveFtSp: {x: 0, y: 0, z: 0}
 --- !u!1 &6089628002311498617
 GameObject:
