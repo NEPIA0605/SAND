@@ -11,6 +11,7 @@ public class VolumeChange : MonoBehaviour
     [Header("ボリューム")]
     public float NowVolume;            //今のボリューム
     private float OldVolume;           //前のボリューム
+    public OptionManager OptAS;             //OptMan
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,27 @@ public class VolumeChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TargetBar.value = NowVolume;
+        //TargetBar.value = NowVolume;
+    }
+
+    //ボリュームを設定＆セーブ
+    public void VolSet()
+    {
+        NowVolume = TargetBar.value;
+
+        if (this.tag == "BGMBar")
+        {
+            PlayerPrefs.SetInt("VOLUME_BGM", (int)NowVolume);
+        }
+        else if (this.tag == "SEBar")
+        {
+            PlayerPrefs.SetInt("VOLUME_SE", (int)NowVolume);
+        }
+
+        PlayerPrefs.Save();
+
+        //SE鳴らす
+        OptAS.AsPlayOs(0);
     }
 
     //ボリュームUp

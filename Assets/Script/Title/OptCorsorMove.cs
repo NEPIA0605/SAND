@@ -22,7 +22,11 @@ public class OptCorsorMove : MonoBehaviour
     private bool MoveEnd;           //移動終了フラグ
     private int MoveNP;             //+1：Next　-1：Prev
 
-    public OptionManager OptMObj;   //ステージセレクトマネージャーのオブジェクト
+    public OptionManager OptMObj;   //オプションマネージャーのオブジェクト
+
+    private Vector3 StaPos;     //初期位置
+
+    private bool stafra;        //最初のフレーム
 
     // Start is called before the first frame update
     void Start()
@@ -30,11 +34,21 @@ public class OptCorsorMove : MonoBehaviour
         NowTime = 0.0f;
         MoveEnd = true;
         OptMObj = GameObject.FindWithTag("OptionManager").GetComponent<OptionManager>();
+
+        StaPos = this.transform.position;
+        stafra = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (stafra)
+        {
+            StaPos = OptMObj.GetBBPos(1);
+            this.transform.position = StaPos;
+            stafra = false;
+        }
+
         if (!MoveEnd)
         {
             if (NowTime <= MoveTime)
@@ -83,6 +97,13 @@ public class OptCorsorMove : MonoBehaviour
             MoveNP = PREV;
             MoveEnd = false;
         }
+    }
+
+    public void CursorReset()
+    {
+        NowTime = 0.0f;
+        MoveEnd = true;
+        this.transform.position = StaPos;
     }
 
     //MoveEndのGetter
