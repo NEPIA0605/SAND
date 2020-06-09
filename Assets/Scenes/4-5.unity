@@ -10431,6 +10431,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 373273955}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &509468771
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395731702930370377, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885779711860386688, guid: 2b5642c855b079149a55f9d41783558e,
+        type: 3}
+      propertyPath: m_Name
+      value: BGM_STAGE
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b5642c855b079149a55f9d41783558e, type: 3}
 --- !u!1001 &509840362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11100,7 +11169,7 @@ PrefabInstance:
     - target: {fileID: 1966080432781902309, guid: 50adfa63f35af764d9a3d708b438bb7d,
         type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50adfa63f35af764d9a3d708b438bb7d, type: 3}
@@ -14059,7 +14128,7 @@ PrefabInstance:
     - target: {fileID: 2625386414613997127, guid: c07852c9a426e9a48b2aee5a4aa4446e,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: SandFragment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c07852c9a426e9a48b2aee5a4aa4446e, type: 3}
@@ -32512,7 +32581,7 @@ PrefabInstance:
     - target: {fileID: 2625386414613997127, guid: c07852c9a426e9a48b2aee5a4aa4446e,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: SandFragment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c07852c9a426e9a48b2aee5a4aa4446e, type: 3}
@@ -38195,7 +38264,7 @@ PrefabInstance:
     - target: {fileID: 1966080432781902309, guid: 50adfa63f35af764d9a3d708b438bb7d,
         type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50adfa63f35af764d9a3d708b438bb7d, type: 3}
@@ -39484,7 +39553,7 @@ PrefabInstance:
     - target: {fileID: 2625386414613997127, guid: c07852c9a426e9a48b2aee5a4aa4446e,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: SandFragment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c07852c9a426e9a48b2aee5a4aa4446e, type: 3}
@@ -41656,7 +41725,7 @@ PrefabInstance:
     - target: {fileID: 1966080432781902309, guid: 50adfa63f35af764d9a3d708b438bb7d,
         type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50adfa63f35af764d9a3d708b438bb7d, type: 3}
@@ -43512,7 +43581,7 @@ PrefabInstance:
     - target: {fileID: 2625386414613997127, guid: c07852c9a426e9a48b2aee5a4aa4446e,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: SandFragment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c07852c9a426e9a48b2aee5a4aa4446e, type: 3}

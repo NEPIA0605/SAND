@@ -16,7 +16,7 @@ public class SandFragment : MonoBehaviour
     [SerializeField] Vector3 SandDir;       // 流砂の向きを保存しておく変数
     Vector3 SandRot;                        // 流砂の角度を取って縦か横かを判断する
     bool P_SandEnpflg;                      // プレイヤーの中砂の有無
-    bool SandCol_X, SandCol_Y;              // 横の流砂・縦の流砂に触れているかどうか
+    public bool SandCol_X, SandCol_Y;              // 横の流砂・縦の流砂に触れているかどうか
     bool P_FtColFrag;                       // プレイヤーがかけらに当たっているかどうか
     bool P_WallCol;                         // プレイヤーが壁に触れているかどうか
     bool Sft_WallCol;                       // かけらが壁に触れているかどうか
@@ -86,6 +86,7 @@ public class SandFragment : MonoBehaviour
         if (SandCol_Y == true)
         {
             this.GetComponent<Rigidbody>().useGravity = false;
+
         }
 
         // プレイヤーの中砂がないときの処理
@@ -97,7 +98,7 @@ public class SandFragment : MonoBehaviour
         else
         {
             // 流砂に触れているときに少し下に力を加えることで流砂の影響を受けれるようにする
-            if ((SandCol_X) || (SandCol_Y))
+            if ((SandCol_X) || (SandCol_Y) && !(P_FtColFrag))
             {
                 this.transform.Translate(0.0f, -0.0001f, 0.0f);
             }
@@ -311,6 +312,26 @@ public class SandFragment : MonoBehaviour
         }
 
     }
+
+    public Vector3 GetSandMoveSFtSp()
+    {
+        return SandMoveFtSp;
+    }
+
+    public bool GetSftSandCol_X()
+    {
+        return SandCol_X;
+    }
+    public  bool GetSftSandCol_Y()
+    {
+        return SandCol_Y;
+    }
+
+    public bool GetSft_WallCol()
+    {
+        return Sft_WallCol;
+    }
+
 }
 
 
