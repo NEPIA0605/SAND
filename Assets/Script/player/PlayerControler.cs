@@ -137,6 +137,7 @@ public class PlayerControler : MonoBehaviour
 
         if (Mathf.Approximately(Time.timeScale, 0f) || ClearFlg == true) //時間が止まっていたら、Update処理をしない処理
         {
+            rb.velocity = new Vector3(0, 0, 0);
             animator.SetBool("Run", false);
             return;
         }
