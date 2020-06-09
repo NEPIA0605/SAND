@@ -86,10 +86,7 @@ public class SandFragment : MonoBehaviour
         if (SandCol_Y == true)
         {
             this.GetComponent<Rigidbody>().useGravity = false;
-            if(P_FtColFrag)
-            {
-                SandMoveFtSp.y *= 10;
-            }
+
         }
 
         // プレイヤーの中砂がないときの処理
@@ -101,7 +98,7 @@ public class SandFragment : MonoBehaviour
         else
         {
             // 流砂に触れているときに少し下に力を加えることで流砂の影響を受けれるようにする
-            if ((SandCol_X) || (SandCol_Y))
+            if ((SandCol_X) || (SandCol_Y) && !(P_FtColFrag))
             {
                 this.transform.Translate(0.0f, -0.0001f, 0.0f);
             }
