@@ -12,18 +12,34 @@ public class OptLRMove : MonoBehaviour
     private Vector3 StartPos;       //開始位置
     private Vector3 EndPos;         //終了位置
 
+    public OptionManager OptMObj;   //オプションマネージャーのオブジェクト
+
     private bool MoveEnd;           //移動終了フラグ
+    public float StaPos;
+    public bool stafra;
+
+    public int id_l2r3;
 
     // Start is called before the first frame update
     void Start()
     {
         NowTime = 0.0f;
         MoveEnd = true;
+
+        StaPos = this.transform.position.x;
+        stafra = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (stafra)
+        {
+            StaPos = OptMObj.GetBBPos(id_l2r3).x;
+            this.transform.position = new Vector3(StaPos, this.transform.position.y, this.transform.position.z);
+            stafra = false;
+        }
+
         if (!MoveEnd)
         {
             if (NowTime <= MoveTime)
@@ -54,5 +70,12 @@ public class OptLRMove : MonoBehaviour
             NowTime = 0.0f;
             MoveEnd = false;
         }
+    }
+
+    public void CLRReset()
+    {
+        NowTime = 0.0f;
+        MoveEnd = true;
+        this.transform.position = new Vector3(StaPos, this.transform.position.y, this.transform.position.z);
     }
 }

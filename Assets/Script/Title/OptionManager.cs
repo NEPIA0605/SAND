@@ -41,13 +41,6 @@ public class OptionManager : MonoBehaviour
     public float time_Out = 0.3f;
     private float timer;
 
-
-    private float RightInputTime;
-    private float LeftInputTime;
-
-    private bool RightInputFlg;
-    private bool LeftInputFlg;
-
     [SerializeField] AudioClip[] clips;//サウンド
 
     //SEです。
@@ -57,10 +50,6 @@ public class OptionManager : MonoBehaviour
     void Start()
     {
         OpCM = cursor.GetComponent<OptCorsorMove>();
-        RightInputTime = 0.0f;
-        LeftInputTime = 0.0f;
-        RightInputFlg = false;
-        LeftInputFlg = false;
         time = false;
         time_option = false;
         timer = 0;
@@ -76,28 +65,6 @@ public class OptionManager : MonoBehaviour
         //カーソル移動中は入力できないようにする
         if (OpCM.GetMoveEnd())
         {
-            if (Input.GetAxisRaw("Horizontal") > 0)
-            {
-
-                RightInputTime += Time.deltaTime;
-            }
-            if (Input.GetAxisRaw("Horizontal") < 0)
-            {
-
-                LeftInputTime += Time.deltaTime;
-            }
-
-            if ((RightInputTime >= 0.1f) || (Input.GetKeyDown(KeyCode.RightArrow)))
-            {
-                RightInputFlg = true;
-                RightInputTime = 0.0f;
-            }
-            if ((LeftInputTime >= 0.1f) || (Input.GetKeyDown(KeyCode.LeftArrow)))
-            {
-                LeftInputFlg = true;
-                LeftInputTime = 0.0f;
-            }
-
             //操作説明表示中は操作できない
             if (option[OPT_HOWTO].GetComponent<HowToChange>().GetHowToFlg() == false)
             {
@@ -140,114 +107,13 @@ public class OptionManager : MonoBehaviour
                     time = false;
                     timer = 0;
 
-                    //決定ボタンでオプション消す
-                    button.Select();
-                    this.gameObject.SetActive(false);
+                    PushTitleBackButton();
                 }
-
-                ////戻る際のSE
-                //Source.PlayOneShot(clips[2]);
-
-                ////戻る
-                //button.Select();
-                //this.gameObject.SetActive(false);
-
             }
 
             //選んでいる項目によって操作を変える
             switch (NowSelOpt)
             {
-                //BGM
-                case OPT_BGM:
-                    if (RightInputFlg == true)
-                    {
-                        float BGM_vol;
-                        BGM_vol = (float)PlayerPrefs.GetInt("VOLUME_BGM", 5);
-                        if (BGM_vol < 10)
-                        {
-                            Source.PlayOneShot(clips[0]);
-                        }
-                        //音量上げ
-                        option[NowSelOpt].GetComponent<VolumeChange>().VolUp();
-                        bgm.BGMVolChange();
-                        RightInputFlg = false;
-                    }
-                    else if (LeftInputFlg == true)
-                    {
-                        float BGM_vol_Left;
-                        BGM_vol_Left = (float)PlayerPrefs.GetInt("VOLUME_BGM", 5);
-                        if (BGM_vol_Left > 1)
-                        {
-                            Source.PlayOneShot(clips[0]);
-                        }
-                        //音量下げ
-                        option[NowSelOpt].GetComponent<VolumeChange>().VolDown();
-                        bgm.BGMVolChange();
-                        //Source.PlayOneShot(clips[0]);
-                        LeftInputFlg = false;
-                    }
-
-                    break;
-                //SE
-                case OPT_SE:
-                    if (RightInputFlg == true)
-                    {
-                        float SE_vol;
-                        SE_vol = (float)PlayerPrefs.GetInt("VOLUME_SE", 5);
-                        if (SE_vol < 10)
-                        {
-                            Source.PlayOneShot(clips[0]);
-                        }
-                        //音量上げ
-                        option[NowSelOpt].GetComponent<VolumeChange>().VolUp();
-                        se1.SEVolChange();
-                        //se2.SEVolChange();
-                        //Source.PlayOneShot(clips[0]);
-                        RightInputFlg = false;
-
-                    }
-                    else if (LeftInputFlg == true)
-                    {
-                        float SE_vol;
-                        SE_vol = (float)PlayerPrefs.GetInt("VOLUME_SE", 5);
-                        if (SE_vol > 1)
-                        {
-                            Source.PlayOneShot(clips[0]);
-                        }
-                        //音量下げ
-                        option[NowSelOpt].GetComponent<VolumeChange>().VolDown();
-                        se1.SEVolChange();
-                        //se2.SEVolChange();
-                        //Source.PlayOneShot(clips[0]);
-                        LeftInputFlg = false;
-
-                    }
-
-                    break;
-                //操作説明
-                case OPT_HOWTO:
-                    if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
-                    {
-                        //決定の際のSE
-                        Source.PlayOneShot(clips[1]);
-
-                        //決定
-                        option[NowSelOpt].GetComponent<HowToChange>().HowToOpen();
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
-                    {
-                        if (!time)
-                        {
-                            Debug.Log("B");
-                            //戻る際のSE
-                            Source.PlayOneShot(clips[2]);
-                        }
-                        //閉じる
-                        option[NowSelOpt].GetComponent<HowToChange>().HowToClose();
-                    }
-
-                    break;
-                //タイトルに戻る
                 case OPT_TITLE:
                     if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                     {
@@ -265,10 +131,6 @@ public class OptionManager : MonoBehaviour
                         Debug.Log("C");
                         time_option = false;
                         timer = 0;
-
-                        //決定ボタンでオプション消す
-                        button.Select();
-                        this.gameObject.SetActive(false);
                     }
 
                     break;
@@ -361,5 +223,77 @@ public class OptionManager : MonoBehaviour
                                                         (option[NowSelOpt - 1].GetComponent<RectTransform>().sizeDelta.x * scale / 2) + (dist * scale) + ajuR;
         cursorR.GetComponent<OptLRMove>().SetEndPosX(tmp);
         return option[NowSelOpt - 1].transform.position;
+    }
+
+    public Vector3 GetBBPos(int id)
+    {
+        //さらに調整
+        float ajuL, ajuR;
+        float scale = this.GetComponent<RectTransform>().localScale.x;
+        if (NowSelOpt - 1 == 2)
+        {
+            ajuL = 130 * scale;
+            ajuR = -130 * scale;
+        }
+        else
+        {
+            ajuL = -20 * scale;
+            ajuR = -50 * scale;
+        }
+
+        float tmp = option[OPT_BGM].transform.position.x -
+                                                (option[OPT_BGM].GetComponent<RectTransform>().sizeDelta.x * scale / 2) - (dist * scale) + ajuL;
+
+        if(id == 2)
+        {
+            return new Vector3(tmp, option[OPT_BGM].transform.position.y, option[OPT_BGM].transform.position.z);
+        }
+
+        tmp = option[OPT_BGM].transform.position.x +
+                                                        (option[OPT_BGM].GetComponent<RectTransform>().sizeDelta.x * scale / 2) + (dist * scale) + ajuR;
+
+        if (id == 3)
+        {
+            return new Vector3(tmp, option[OPT_BGM].transform.position.y, option[OPT_BGM].transform.position.z);
+        }
+
+        return option[OPT_BGM].transform.position;
+    }
+
+    //操作説明押したとき
+    public void PushHowToButton()
+    {
+        //決定の際のSE
+        Source.PlayOneShot(clips[1]);
+
+        //決定
+        option[OPT_HOWTO].GetComponent<HowToChange>().HowToOpen();
+    }
+
+    //タイトルに戻るボタン押したとき
+    public void PushTitleBackButton()
+    {
+        //決定ボタンでオプション消す
+        button.Select();
+        this.gameObject.SetActive(false);
+    }
+
+    //プレイワンショットするだけ…じゃない
+    public void AsPlayOs(int num)
+    {
+        Source.PlayOneShot(clips[num]);
+
+        bgm.BGMVolChange();
+        se1.SEVolChange();
+        se2.SEVolChange();
+    }
+
+    public void CReset()
+    {
+        NowSelOpt = FIRST_OPT;
+
+        cursor.GetComponent<OptCorsorMove>().CursorReset();
+        cursorR.GetComponent<OptLRMove>().CLRReset();
+        cursorL.GetComponent<OptLRMove>().CLRReset();
     }
 }
