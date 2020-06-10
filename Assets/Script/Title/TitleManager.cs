@@ -12,6 +12,7 @@ public class TitleManager : MonoBehaviour
     private GameObject FadeObj; //フェードのパネル
     public GameObject OptionObj;    //オプションのウインドウ
     public Button button;
+    public Slider BgmSlider;
 
     float time_Title;
     float time_Title_MAX = 0.25f;
@@ -130,6 +131,8 @@ public class TitleManager : MonoBehaviour
 
             Debug.Log("オプションを開く");
             OptionObj.SetActive(true);
+            OptionObj.GetComponent<OptionManager>().CReset();
+            BgmSlider.Select();
         }
     }
 

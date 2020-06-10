@@ -198,6 +198,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111703170}
   m_CullTransparentMesh: 0
+--- !u!1 &152458787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5623166714608581808, guid: 724f309241feefb4bb2e8da8ac546c1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 602872698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &171314747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6725317900938355893, guid: 724f309241feefb4bb2e8da8ac546c1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 602872698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &280939058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -865,6 +877,16 @@ PrefabInstance:
       propertyPath: bgm
       value: 
       objectReference: {fileID: 280939059}
+    - target: {fileID: 5467900425311527006, guid: 724f309241feefb4bb2e8da8ac546c1d,
+        type: 3}
+      propertyPath: cursorR
+      value: 
+      objectReference: {fileID: 152458787}
+    - target: {fileID: 5467900425311527006, guid: 724f309241feefb4bb2e8da8ac546c1d,
+        type: 3}
+      propertyPath: cursorL
+      value: 
+      objectReference: {fileID: 171314747}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 724f309241feefb4bb2e8da8ac546c1d, type: 3}
 --- !u!1 &602872699 stripped
@@ -879,6 +901,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 602872698}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &937367252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3576919942470844559, guid: 724f309241feefb4bb2e8da8ac546c1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 602872698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &947694167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OptionObj: {fileID: 602872699}
   button: {fileID: 467752656}
+  BgmSlider: {fileID: 937367252}
   clips:
   - {fileID: 8300000, guid: ba5dab5a311e4824cb82515651869072, type: 3}
   - {fileID: 8300000, guid: 7e336facd4de89647b904b87d19ac94f, type: 3}

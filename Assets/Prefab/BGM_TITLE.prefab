@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5238020937894562764}
   - component: {fileID: 2006390624204606009}
+  - component: {fileID: -8181292765821540149}
+  - component: {fileID: -1746401175322896854}
   - component: {fileID: -572444484733018354}
   m_Layer: 0
   m_Name: BGM_TITLE
@@ -45,6 +47,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGMAudioSource: {fileID: 0}
+--- !u!114 &-8181292765821540149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8116856986788305959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88792b1d61596948a35e16465ebe7d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFade: 1
+  FadeInSeconds: 10
+--- !u!114 &-1746401175322896854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8116856986788305959}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a02da606664d348b930ab67af31659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFade: 0
+  FadeOutSeconds: 10
 --- !u!82 &-572444484733018354
 AudioSource:
   m_ObjectHideFlags: 0
