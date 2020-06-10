@@ -14,6 +14,7 @@ public class EffectManager : MonoBehaviour
     float ColorIntensity;
     float ColorTime;
     bool IntensityFlg;  //Intensityが完了したかどうか
+    bool EffectPlayerEnptyFlg;
     public float MaxColorTime;
     public float MaxIntensity;
     
@@ -40,9 +41,14 @@ public class EffectManager : MonoBehaviour
     void Update()
     {
         PlayerTurnFlg = PlayerObj.GetComponent<PlayerControler>().GetPlayerTurn();
-        vignette.intensity.Override(ColorIntensity);
+        EffectPlayerEnptyFlg = PlayerObj.GetComponent<PlayerControler>().GetPlayerEnpty();
 
-        Debug.Log("色" + ColorIntensity);
+        if(EffectPlayerEnptyFlg == true)
+        {
+            PlayerTurnFlg = false;
+        }
+
+        //Debug.Log("色" + ColorIntensity);
         //Debug.Log("時間" + ColorTime);
 
         Debug.Log("反転 :"+PlayerTurnFlg);
@@ -60,11 +66,12 @@ public class EffectManager : MonoBehaviour
         {
             if (ColorIntensity >  0.0f)
             {
+                Debug.Log("adawda");
+
                 IntensityFlg = true;
                 TimeCntFlg = true;
             }
             //vignette.enabled.Override(false);
-
         }
 
         if (TimeCntFlg == true)
@@ -100,7 +107,6 @@ public class EffectManager : MonoBehaviour
                 if (ColorTime <= MaxColorTime)
                 {
                     ColorIntensity = MaxIntensity - ((ColorTime / MaxColorTime) * MaxIntensity);
-
                 }
                 else
                 {
@@ -110,7 +116,30 @@ public class EffectManager : MonoBehaviour
                     IntensityFlg = false;
                 }
             }
-
         }
+
+        //反映
+        vignette.intensity.Override(ColorIntensity);
+
+
+        //if (EffectPlayerEnptyFlg == true && ColorIntensity > 0.0f) {
+        //    IntensityFlg = true;
+        //    TimeCntFlg = true;
+        //}
+        //if (EffectPlayerEnptyFlg == true && ColorIntensity >= 0.0f)
+        //{ 
+        //    if (ColorTime <= MaxColorTime)
+        //    {
+        //        ColorTime += Time.deltaTime;
+        //        ColorIntensity = MaxIntensity - ((ColorTime / MaxColorTime) * MaxIntensity);
+        //    }
+        //    else
+        //    {
+        //        ColorIntensity = 0.0f;
+        //        TimeCntFlg = false;
+        //        ColorTime = 0.0f;
+        //        IntensityFlg = false;
+        //    }
+        //}
     }
 }
