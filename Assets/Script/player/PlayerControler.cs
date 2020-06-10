@@ -889,7 +889,6 @@ public class PlayerControler : MonoBehaviour
         //高いところから落ちたとき
         if (PlayerOldVelocity <= FallDeathPos)
         {
-
             if (collision.gameObject.tag == "Block" || PlayerXSandFlg == true || collision.gameObject.tag == "Fragment")
             {
                 {
