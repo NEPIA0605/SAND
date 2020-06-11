@@ -42,7 +42,7 @@ public class Fadeout_Sound : MonoBehaviour
                 FadeDeltaTime = FadeOutSeconds * BaseVolume_S * 0.1;
                 IsFadeOut = false;
             }
-            Source.volume = (float)(1.0 - FadeDeltaTime / FadeOutSeconds);
+            Source.volume = (float)((BaseVolume_S * 0.1)  - (FadeDeltaTime / FadeOutSeconds));
         }
     }
 }
