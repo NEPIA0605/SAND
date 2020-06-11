@@ -45,6 +45,7 @@ public class PlayerControler : MonoBehaviour
     int PlayerMovevelo;
     bool PlayerVeloFlg;
     bool NotJumpFlg;
+    GameObject SandUIAuraObj;                  // サンドUIのオーラ
 
     float Turn;
 
@@ -114,7 +115,9 @@ public class PlayerControler : MonoBehaviour
         FtCol = false;
         DustParticle = GameObject.Find("DustParticle");
         DustParticle.gameObject.SetActive(false);
+        SandUIAuraObj = GameObject.Find("SandUIAura");
 
+        SandUIAuraObj.gameObject.SetActive(false);
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
         this.transform.position = StartPlayerPos;
@@ -540,6 +543,15 @@ public class PlayerControler : MonoBehaviour
             }
         }
 
+        //オーラ
+        if(PlayerTurn == true && PlayerEnptyFlg == false)
+        {
+            SandUIAuraObj.gameObject.SetActive(true);
+        }
+        else
+        {
+            SandUIAuraObj.gameObject.SetActive(false);
+        }
     }
 
     private void FixedUpdate()
