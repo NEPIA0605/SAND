@@ -19,7 +19,7 @@ public class Fragment : MonoBehaviour
     Vector3 SandRot;                // 流砂の角度を取って縦か横かを判断する
     Vector3 FragmentMoveFt;         // かけらに乗って一緒に移動
     bool P_SandEnpflg;              // プレイヤーの中砂の有無
-    bool SandCol_X, SandCol_Y;      // 横の流砂・縦の流砂に触れているかどうか
+    [SerializeField] bool SandCol_X, SandCol_Y;      // 横の流砂・縦の流砂に触れているかどうか
     bool WallCol;                   // 壁に触れているかどうか
     bool WallColFt;                 // 壁に触れているかけらかどうか
     [SerializeField] bool Ft_Col;   // かけらに触れてるかどうか
@@ -100,27 +100,41 @@ public class Fragment : MonoBehaviour
                 {
                     this.transform.Translate(0.0f, -0.0001f, 0.0f);
                 }
+
+     
             }
 
 
         }
-
-        if(P_FtCol)
+        if ((!SandCol_X) || (!SandCol_Y))
         {
-            this.transform.position += new Vector3(0.0f, 0.011f, 0.0f);
+            if (P_FtCol)
+            {
+                this.transform.position += new Vector3(0.0f, 0.011f, 0.0f);
+            }
         }
 
-        // 流砂が地面張られているときは重力をかける
-        if (SandCol_X == true)
-        {
-            this.GetComponent<Rigidbody>().useGravity = true;
-        }
+
+            // 流砂が地面張られているときは重力をかける
+            if (SandCol_X == true)
+            {
+                localGravity.y = -30;
+
+                this.GetComponent<Rigidbody>().useGravity = true;
+ 
+            }
+
 
 
         // 流砂が壁に貼られているときは重力を切る
         if (SandCol_Y == true)
         {
+            localGravity.y = 0;
             this.GetComponent<Rigidbody>().useGravity = false;
+            if (SandMoveFtSp.y < 0.0f)
+            {
+                SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+            }
 
         }
 
@@ -217,14 +231,7 @@ public class Fragment : MonoBehaviour
             else
             {
                 SandCol_Y = true;
-                if (SandCol_X)
-                {
-                    if (SandMoveFtSp.y < 0.0f)
-                    {
-                        SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
-                    }
 
-                }
                 this.transform.Translate(SandMoveFtSp);
 
             }
@@ -254,13 +261,6 @@ public class Fragment : MonoBehaviour
                 SandCol_Y = true;
                 SandMoveFtSp /= 50;
 
-                if (SandCol_X)
-                {
-                    if (SandMoveFtSp.y < 0.0f)
-                    {
-                        SandMoveFtSp.y = 0.0f;
-                    }
-                }
                 this.transform.Translate(SandMoveFtSp);
             }
         }
