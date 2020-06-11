@@ -20,7 +20,7 @@ public class LastClearmanager : MonoBehaviour
         red = 1;
         green =1;
         blue = 1;
-        alfa = GetComponent<Image>().color.a;
+        alfa = GameClearFade.GetComponent<Image>().color.a;
 
         LastFadeFlg = false;
     }

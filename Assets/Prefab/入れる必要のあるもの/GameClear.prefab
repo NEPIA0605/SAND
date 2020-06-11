@@ -264,7 +264,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 486.108, y: -194.04346}
-  m_SizeDelta: {x: 550, y: 120}
+  m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6074453617509152269
 CanvasRenderer:
@@ -292,8 +292,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1afdc6044f89ee642a1a8c035ae3e4f1, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 4639b5961d45f0c419131d33e509b0fe, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -320,7 +320,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 6074453618169437612}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0.54901963, b: 0.54901963, a: 1}
@@ -330,10 +330,11 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 6f3e49a7b51ce5d4ca3673a9798849d7,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: a1c19e31823300d4cbfe600385f73b39, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 6f3e49a7b51ce5d4ca3673a9798849d7, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 3f36e60e8ae03cc4f812ebe3f6d9b425, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -470,7 +471,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 486.108, y: -364.04346}
-  m_SizeDelta: {x: 550, y: 120}
+  m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6074453618169437614
 CanvasRenderer:
@@ -498,8 +499,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1afdc6044f89ee642a1a8c035ae3e4f1, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 4639b5961d45f0c419131d33e509b0fe, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -526,7 +527,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 6074453617509152267}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0.54901963, b: 0.54901963, a: 1}
@@ -536,10 +537,11 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 6f3e49a7b51ce5d4ca3673a9798849d7,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: a1c19e31823300d4cbfe600385f73b39, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 6f3e49a7b51ce5d4ca3673a9798849d7, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 3f36e60e8ae03cc4f812ebe3f6d9b425, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
