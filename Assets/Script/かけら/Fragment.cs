@@ -105,7 +105,7 @@ public class Fragment : MonoBehaviour
 
         }
 
-        if(Player_Hit)
+        if(P_FtCol)
         {
             this.transform.position += new Vector3(0.0f, 0.011f, 0.0f);
         }
@@ -200,6 +200,7 @@ public class Fragment : MonoBehaviour
                 {
                     SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
                     SandMoveFtSp /= 50;
+
                 }
             }
 
@@ -244,6 +245,7 @@ public class Fragment : MonoBehaviour
             {
                 SandCol_X = true;
                 SandMoveFtSp /= 50;
+
                 this.transform.Translate(SandMoveFtSp);
             }
             // 流砂が平面じゃない
@@ -251,6 +253,7 @@ public class Fragment : MonoBehaviour
             {
                 SandCol_Y = true;
                 SandMoveFtSp /= 50;
+
                 if (SandCol_X)
                 {
                     if (SandMoveFtSp.y < 0.0f)
@@ -286,23 +289,19 @@ public class Fragment : MonoBehaviour
                 if (Ft_SandCol_X)
                 {
                     Ft_Col = true;
-                    //this.transform.Translate(FragmentMoveFt);
-                    transform.SetParent(collision.transform);
+                    this.transform.Translate(FragmentMoveFt);
 
                     // かけらが壁に触れている・壁に触れているかけらに乗っているときに流れないようにする。
                     if ((WallColFt) || (Ft_Wall_Ft))
                     {
-                        transform.SetParent(null);
-                       // FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+                        FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
                     }
                 }
                 // 壁の流砂に触れたら重力をかけ、上に飛ばないように
                 if (Ft_SandCol_Y)
                 {
-                    transform.SetParent(collision.transform);
-
                     this.GetComponent<Rigidbody>().useGravity = false;
-                   // FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+                    FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
                 }
             }
             // かけらが流砂に触れているとき
