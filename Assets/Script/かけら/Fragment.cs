@@ -163,6 +163,19 @@ public class Fragment : MonoBehaviour
         SetLocalGravity(); //重力をAddForceでかけるメソッドを呼ぶ。
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            WallCol = true;
+            SandDir = SandMoveFtSp;
+        }
+        if (collision.gameObject.tag == "Fragment")
+        {
+            Ft_Col = true;
+            SandDir = SandMoveFtSp;
+        }
+    }
 
     private void OnCollisionStay(Collision collision)
     {
@@ -175,6 +188,21 @@ public class Fragment : MonoBehaviour
             // 流砂の移動量を取得
             SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
             SandMoveFtSp /= 50;
+
+
+            if ((WallCol) || (Ft_Col))
+            {
+                if (SandDir == SandMoveFtSp)
+                {
+                    SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+                }
+                else
+                {
+                    SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
+                    SandMoveFtSp /= 50;
+                }
+            }
+
 
 
             // 流砂平面かどうか
@@ -258,19 +286,23 @@ public class Fragment : MonoBehaviour
                 if (Ft_SandCol_X)
                 {
                     Ft_Col = true;
-                    this.transform.Translate(FragmentMoveFt);
+                    //this.transform.Translate(FragmentMoveFt);
+                    transform.SetParent(collision.transform);
 
                     // かけらが壁に触れている・壁に触れているかけらに乗っているときに流れないようにする。
                     if ((WallColFt) || (Ft_Wall_Ft))
                     {
-                        FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+                        transform.SetParent(null);
+                       // FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
                     }
                 }
                 // 壁の流砂に触れたら重力をかけ、上に飛ばないように
                 if (Ft_SandCol_Y)
                 {
-                    this.GetComponent<Rigidbody>().useGravity = true;
-                    FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+                    transform.SetParent(collision.transform);
+
+                    this.GetComponent<Rigidbody>().useGravity = false;
+                   // FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
                 }
             }
             // かけらが流砂に触れているとき
@@ -354,7 +386,8 @@ public class Fragment : MonoBehaviour
         if (collision.gameObject.tag == "Fragment")
         {
             Ft_Col = false;
-            FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+            transform.SetParent(null);
+ //           FragmentMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
         }
     }
 

@@ -98,9 +98,12 @@ public class SandFragment : MonoBehaviour
         else
         {
             // 流砂に触れているときに少し下に力を加えることで流砂の影響を受けれるようにする
-            if ((SandCol_X) || (SandCol_Y) && !(P_FtColFrag))
+            if ((SandCol_X) || (SandCol_Y))
             {
-                this.transform.Translate(0.0f, -0.0001f, 0.0f);
+                if(!P_FtColFrag)
+                {
+                    this.transform.Translate(0.0f, -0.0001f, 0.0f);
+                }
             }
         }
     }
