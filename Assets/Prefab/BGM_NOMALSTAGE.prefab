@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3284729859229167350}
   - component: {fileID: 2889166577151253827}
+  - component: {fileID: 8705664058961701491}
+  - component: {fileID: 4379915049021666048}
+  - component: {fileID: 664850279887531425}
   - component: {fileID: 3284729859229167351}
   m_Layer: 0
   m_Name: BGM_NOMALSTAGE
@@ -45,6 +48,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGMAudioSource: {fileID: 0}
+--- !u!114 &8705664058961701491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284729859229167344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3563f95ecee784ca5feedab21098e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFade: 1
+  FadeOutSeconds: 2.5
+--- !u!114 &4379915049021666048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284729859229167344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88792b1d61596948a35e16465ebe7d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFade: 1
+  FadeInSeconds: 3.25
+--- !u!114 &664850279887531425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284729859229167344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a02da606664d348b930ab67af31659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFade: 1
+  FadeOutSeconds: 2.5
 --- !u!82 &3284729859229167351
 AudioSource:
   m_ObjectHideFlags: 0
