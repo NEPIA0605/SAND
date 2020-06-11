@@ -10,6 +10,10 @@ public class GAMEOVER : MonoBehaviour
 
     GameObject GameOverUI;
 
+    float Audio_length;
+    bool Audiotime;
+
+    bool Audio_flg;
 
     bool GAMEOVER_BGM;
 
@@ -32,7 +36,9 @@ public class GAMEOVER : MonoBehaviour
         //サウンド
         Source = GetComponent<AudioSource>();
         GAMEOVER_BGM = true;
-
+        Audiotime = false;
+        Audio_flg = false;
+        Audio_length = 0;
     }
 
     // Update is called once per frame
@@ -45,7 +51,20 @@ public class GAMEOVER : MonoBehaviour
             Debug.Log("シナモンロールCV俺");
             Source.PlayOneShot(clips[0]);
             GAMEOVER_BGM = false;
+            Audiotime = true;
         }
+        if (Audiotime)
+        {
+            Audio_length += Time.deltaTime;
+            if (Audio_length > Source.clip.length)
+            {
+                Audio_flg = true;
+            }
+        }
+    }
 
+    public bool GetOverSoundFlg()
+    {
+        return Audio_flg;
     }
 }

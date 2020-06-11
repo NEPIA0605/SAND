@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3284729859229167350}
   - component: {fileID: 2889166577151253827}
+  - component: {fileID: 1679028042837937158}
   - component: {fileID: 8705664058961701491}
   - component: {fileID: 4379915049021666048}
   - component: {fileID: 664850279887531425}
@@ -48,6 +49,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGMAudioSource: {fileID: 0}
+--- !u!114 &1679028042837937158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284729859229167344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b74d655abee0949ba327368a29e115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFade: 1
+  FadeInSeconds: 3.25
 --- !u!114 &8705664058961701491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +115,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 03072c01ae0674c479f7aa28b89aeeb6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f1ae26f7cdf0cdf4aa69ef1d8c5f8ac2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.061
   m_Pitch: 1
