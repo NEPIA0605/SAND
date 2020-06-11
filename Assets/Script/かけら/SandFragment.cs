@@ -17,7 +17,7 @@ public class SandFragment : MonoBehaviour
     Vector3 SandRot;                        // 流砂の角度を取って縦か横かを判断する
     bool P_SandEnpflg;                      // プレイヤーの中砂の有無
     public bool SandCol_X, SandCol_Y;              // 横の流砂・縦の流砂に触れているかどうか
-    bool P_FtColFrag;                       // プレイヤーがかけらに当たっているかどうか
+    [SerializeField] bool P_FtColFrag;                       // プレイヤーがかけらに当たっているかどうか
     bool P_WallCol;                         // プレイヤーが壁に触れているかどうか
     bool Sft_WallCol;                       // かけらが壁に触れているかどうか
     bool Ft_Col;                            // かけらがかけらに触れているかどうか
@@ -59,7 +59,8 @@ public class SandFragment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(SandCol_Y==false)
+
+        if (SandCol_Y==false)
         {
             SetLocalGravity(); //重力をAddForceでかけるメソッドを呼ぶ。
 
@@ -100,9 +101,9 @@ public class SandFragment : MonoBehaviour
             // 流砂に触れているときに少し下に力を加えることで流砂の影響を受けれるようにする
             if ((SandCol_X) || (SandCol_Y))
             {
-                if(!P_FtColFrag)
+                if(P_FtColFrag == false)
                 {
-                    this.transform.Translate(0.0f, -0.0001f, 0.0f);
+                    //this.transform.Translate(0.0f, -0.0001f, 0.0f);
                 }
             }
         }
@@ -115,11 +116,22 @@ public class SandFragment : MonoBehaviour
             Sft_WallCol = true;
             SandDir = SandMoveFtSp;
         }
+        //if (collision.gameObject.tag == "Player")
+        //{
+        //    Ft_Col = true;
+        //    SandDir = SandMoveFtSp;
+        //}
         if (collision.gameObject.tag == "Fragment")
         {
             Ft_Col = true;
             SandDir = SandMoveFtSp;
         }
+        if (collision.gameObject.tag == "SandFragment")
+        {
+            Ft_Col = true;
+            SandDir = SandMoveFtSp;
+        }
+
     }
 
     private void OnCollisionStay(Collision collision)
@@ -133,7 +145,9 @@ public class SandFragment : MonoBehaviour
 
             // 流砂の移動量を取得
             SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-            SandMoveFtSp /= 50;
+            //SandMoveFtSp /= 50;
+            SandMoveFtSp *= Time.deltaTime;
+
 
             if ((Sft_WallCol) || (Ft_Col))
             {
@@ -144,7 +158,9 @@ public class SandFragment : MonoBehaviour
                 else
                 {
                     SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-                    SandMoveFtSp /= 50;
+                   // SandMoveFtSp /= 50;
+                    SandMoveFtSp *= Time.deltaTime;
+
                 }
             }
 
@@ -205,7 +221,9 @@ public class SandFragment : MonoBehaviour
 
             // 流砂の移動量を取得
             SandMoveFtSp = collision.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
-            SandMoveFtSp /= 50;
+           // SandMoveFtSp /= 50;
+            SandMoveFtSp *= Time.deltaTime;
+
 
             if ((Sft_WallCol) || (Ft_Col))
             {
@@ -216,7 +234,9 @@ public class SandFragment : MonoBehaviour
                 else
                 {
                     SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-                    SandMoveFtSp /= 50;
+               //     SandMoveFtSp /= 50;
+                    SandMoveFtSp *= Time.deltaTime;
+
 
                 }
             }
@@ -294,7 +314,18 @@ public class SandFragment : MonoBehaviour
             SandDir = new Vector3(0.0f, 0.0f, 0.0f);
         }
 
+        if (collision.gameObject.tag == "Player")
+        {
+            Ft_Col = false;
+            SandDir = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+
         if (collision.gameObject.tag == "Fragment")
+        {
+            Ft_Col = false;
+            SandDir = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+        if (collision.gameObject.tag == "SandFragment")
         {
             Ft_Col = false;
             SandDir = new Vector3(0.0f, 0.0f, 0.0f);
