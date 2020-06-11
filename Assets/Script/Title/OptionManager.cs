@@ -36,6 +36,7 @@ public class OptionManager : MonoBehaviour
     public float dist;      //距離
 
     //タイム計測用
+    public bool Push_Title;
     public bool time_option;
     public bool time;
     public float time_Out = 0.3f;
@@ -50,6 +51,8 @@ public class OptionManager : MonoBehaviour
     void Start()
     {
         OpCM = cursor.GetComponent<OptCorsorMove>();
+
+        Push_Title = false;
         time = false;
         time_option = false;
         timer = 0;
@@ -89,12 +92,13 @@ public class OptionManager : MonoBehaviour
                     //下へ
                     OpCM.GoNext();
                 }
-                else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
+                else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1") || Push_Title == true)
                 {
                     Debug.Log("A");
                     time = true;
                     //戻る際のSE
                     Source.PlayOneShot(clips[2]);
+                    Push_Title = false;
                 }
                 if (time)
                 {
@@ -106,8 +110,9 @@ public class OptionManager : MonoBehaviour
                     Debug.Log("A");
                     time = false;
                     timer = 0;
+                    this.gameObject.SetActive(false);
 
-                    PushTitleBackButton();
+                    //PushTitleBackButton();
                 }
             }
 
@@ -275,7 +280,8 @@ public class OptionManager : MonoBehaviour
     {
         //決定ボタンでオプション消す
         button.Select();
-        this.gameObject.SetActive(false);
+        Push_Title = true;
+        //this.gameObject.SetActive(false);
     }
 
     //プレイワンショットするだけ…じゃない
