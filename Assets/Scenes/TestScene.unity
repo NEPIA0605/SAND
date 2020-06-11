@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.16605067, g: 0.10133342, b: 0.025095409, a: 1}
+  m_IndirectSpecularColor: {r: 0.16609058, g: 0.10136726, b: 0.025068648, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8437,6 +8437,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SandUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137723068542677480, guid: 9cf583276e113b8448edf32a11a95b79,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: acb25bfd324615447837aa684bedda4e,
+        type: 3}
+    - target: {fileID: 8137723068542677487, guid: 9cf583276e113b8448edf32a11a95b79,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137723068542677487, guid: 9cf583276e113b8448edf32a11a95b79,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cf583276e113b8448edf32a11a95b79, type: 3}
