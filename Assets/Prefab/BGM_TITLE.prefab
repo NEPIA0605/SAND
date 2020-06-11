@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsFade: 1
-  FadeInSeconds: 10
+  FadeInSeconds: 3.25
 --- !u!114 &-1746401175322896854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,13 +68,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8116856986788305959}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24a02da606664d348b930ab67af31659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsFade: 0
-  FadeOutSeconds: 10
+  IsFade: 1
+  FadeOutSeconds: 2.5
 --- !u!82 &-572444484733018354
 AudioSource:
   m_ObjectHideFlags: 0
@@ -85,7 +85,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4d43d661c4389e64687d7f67d367bc5b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 869fd493b84797e46801b5c978c08fd0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
