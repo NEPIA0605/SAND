@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2395731702930370377}
   - component: {fileID: 735305894430317938}
+  - component: {fileID: 8606633885865176219}
+  - component: {fileID: 406326780076278567}
+  - component: {fileID: 5705720029159553072}
+  - component: {fileID: 89755469940870595}
   - component: {fileID: 1938016310594925680}
   m_Layer: 0
   m_Name: BGM_STAGE
@@ -45,6 +49,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGMAudioSource: {fileID: 0}
+--- !u!114 &8606633885865176219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4885779711860386688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b74d655abee0949ba327368a29e115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFade: 1
+  FadeInSeconds: 3.25
+--- !u!114 &406326780076278567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4885779711860386688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3563f95ecee784ca5feedab21098e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFade: 1
+  FadeOutSeconds: 2.5
+--- !u!114 &5705720029159553072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4885779711860386688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88792b1d61596948a35e16465ebe7d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFade: 1
+  FadeInSeconds: 3.25
+--- !u!114 &89755469940870595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4885779711860386688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a02da606664d348b930ab67af31659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFade: 1
+  FadeOutSeconds: 2.5
 --- !u!82 &1938016310594925680
 AudioSource:
   m_ObjectHideFlags: 0

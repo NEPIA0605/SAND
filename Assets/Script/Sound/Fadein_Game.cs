@@ -6,7 +6,9 @@ public class Fadein_Game : MonoBehaviour
 {
     protected AudioSource Source;
 
-    protected GameObject GameOverUI_Sound;
+    protected GameObject GameOverUI_S;
+
+    protected GameObject GameClearUI_S;
 
     private FadeManager FadeObj;
 
@@ -14,9 +16,9 @@ public class Fadein_Game : MonoBehaviour
 
     public double FadeInSeconds = 1.0f;
 
-    bool GameClearFlg_Soundin;
+    bool GC_Flg;
 
-    bool GameOverFlg_Soundin;
+    bool GO_Flg;
 
     double FadeDeltaTime = 0;
 
@@ -28,33 +30,38 @@ public class Fadein_Game : MonoBehaviour
         BaseVolume = (float)PlayerPrefs.GetInt("VOLUME_BGM", 5);
         //フェードパネルとUIの親取得
         FadeObj = GameObject.Find("FadePanel").GetComponent<FadeManager>();
-        GameOverUI_Sound = GameObject.Find("GameoverUI");
+        GameOverUI_S = GameObject.Find("BGM_GAMEOVER");
+        GameClearUI_S = GameObject.Find("BGM_CLEAR");
 
-        GameClearFlg_Soundin = false;
-        GameOverFlg_Soundin = false;
+        GC_Flg = false;
+        GO_Flg = false;
     }
 
     void Update()
     {
         //Debug.Log("フェード");
 
-        GameClearFlg_Soundin = GameOverUI_Sound.GetComponent<GAMEOVER>().GetOverSoundFlg();
-
-        if (IsFade && GameClearFlg_Soundin)//&& !FadeObj.GetFadeOutFlg()
+        GO_Flg = GameOverUI_S.GetComponent<GAMEOVER>().GetOverSoundFlg();
+        GC_Flg = GameClearUI_S.GetComponent<GAMECLEAR>().GetClearSoundFlg();
+        
+        if (IsFade )//&& !FadeObj.GetFadeOutFlg()
         {
-            Debug.Log("フェード");
-
-            Debug.Log(BaseVolume);
-            Debug.Log(FadeInSeconds);
-            //Debug.Log(FadeDeltaTime);
-            Debug.Log(Source.volume);
-            FadeDeltaTime += Time.deltaTime;
-            if (FadeDeltaTime >= (FadeInSeconds * BaseVolume * 0.1))
+            if (GC_Flg || GO_Flg)
             {
-                FadeDeltaTime = FadeInSeconds * BaseVolume * 0.1;
-                IsFade = false;
+                Debug.Log("フェード");
+
+                Debug.Log(BaseVolume);
+                Debug.Log(FadeInSeconds);
+                //Debug.Log(FadeDeltaTime);
+                Debug.Log(Source.volume);
+                FadeDeltaTime += Time.deltaTime;
+                if (FadeDeltaTime >= (FadeInSeconds * BaseVolume * 0.1))
+                {
+                    FadeDeltaTime = FadeInSeconds * BaseVolume * 0.1;
+                    IsFade = false;
+                }
+                Source.volume = (float)(FadeDeltaTime / FadeInSeconds);
             }
-            Source.volume = (float)(FadeDeltaTime / FadeInSeconds);
         }
     }
 }

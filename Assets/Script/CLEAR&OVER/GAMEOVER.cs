@@ -11,6 +11,9 @@ public class GAMEOVER : MonoBehaviour
     GameObject GameOverUI;
 
     float Audio_length;
+
+    float Audio_Clip;
+
     bool Audiotime;
 
     bool Audio_flg;
@@ -38,7 +41,8 @@ public class GAMEOVER : MonoBehaviour
         GAMEOVER_BGM = true;
         Audiotime = false;
         Audio_flg = false;
-        Audio_length = 0;
+        Audio_length = 2;
+        Audio_Clip = 0;
     }
 
     // Update is called once per frame
@@ -48,15 +52,16 @@ public class GAMEOVER : MonoBehaviour
 
         if ((GameOverUI.activeSelf) && (GAMEOVER_BGM) && (GameOverFlg_BGM))
         {
-            Debug.Log("シナモンロールCV俺");
+            //Debug.Log("シナモンロールCV俺");
             Source.PlayOneShot(clips[0]);
             GAMEOVER_BGM = false;
             Audiotime = true;
+            Audio_Clip = Source.clip.length;
         }
         if (Audiotime)
         {
             Audio_length += Time.deltaTime;
-            if (Audio_length > Source.clip.length)
+            if (Audio_length > Audio_Clip)
             {
                 Audio_flg = true;
             }
