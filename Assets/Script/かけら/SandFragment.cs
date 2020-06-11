@@ -103,7 +103,7 @@ public class SandFragment : MonoBehaviour
             {
                 if(P_FtColFrag == false)
                 {
-                    //this.transform.Translate(0.0f, -0.0001f, 0.0f);
+                    this.transform.Translate(0.0f, -0.0001f, 0.0f);
                 }
             }
         }
