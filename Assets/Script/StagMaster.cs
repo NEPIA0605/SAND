@@ -26,6 +26,7 @@ public class StagMaster : MonoBehaviour
     private bool    FirstSwitch = true;     //初回の切り替え
 
     [Header("回転運動を行うか")]
+    [Tooltip("回転運動を行うか")]
     public bool     RotateMove;
     [Header("回転軸の指定")]
     public bool     x;
@@ -58,8 +59,6 @@ public class StagMaster : MonoBehaviour
         }
         //実際に使うのはAllFrameなので
         AllFrame = (float)MoveFrame;
-
-        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
@@ -71,9 +70,10 @@ public class StagMaster : MonoBehaviour
             //時間の割合を出す
             float t = Mathf.Min(NowFrame / AllFrame, 1.0f);
             float leapt = (t * t) * (3.0f - (2.0f * t));    //ゆっくり動き出してゆっくり止まる公式：(t^2(3 - 2t))
-            
+
             if(MoveUp)
             {
+                //隙あらば関数化する予定
                 //上昇時
                 if (t < 1.0f)
                 {
