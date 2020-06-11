@@ -145,8 +145,7 @@ public class SandFragment : MonoBehaviour
 
             // 流砂の移動量を取得
             SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-            //SandMoveFtSp /= 50;
-            SandMoveFtSp *= Time.deltaTime;
+            SandMoveFtSp /= 50;
 
 
             if ((Sft_WallCol) || (Ft_Col))
@@ -158,8 +157,7 @@ public class SandFragment : MonoBehaviour
                 else
                 {
                     SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-                   // SandMoveFtSp /= 50;
-                    SandMoveFtSp *= Time.deltaTime;
+                    SandMoveFtSp /= 50;
 
                 }
             }
@@ -221,8 +219,7 @@ public class SandFragment : MonoBehaviour
 
             // 流砂の移動量を取得
             SandMoveFtSp = collision.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
-           // SandMoveFtSp /= 50;
-            SandMoveFtSp *= Time.deltaTime;
+            SandMoveFtSp /= 50;
 
 
             if ((Sft_WallCol) || (Ft_Col))
@@ -234,8 +231,7 @@ public class SandFragment : MonoBehaviour
                 else
                 {
                     SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-               //     SandMoveFtSp /= 50;
-                    SandMoveFtSp *= Time.deltaTime;
+                    SandMoveFtSp /= 50;
 
 
                 }

@@ -419,6 +419,16 @@ public class PlayerControler : MonoBehaviour
             }
         }
 
+        if (Ft_SandCol_X || SFt_SandCol_X && FtCol)
+        {
+            this.GetComponent<Rigidbody>().useGravity = true;
+        }
+
+        if (Ft_SandCol_Y || SFt_SandCol_Y && FtCol)
+        {
+            this.GetComponent<Rigidbody>().useGravity = false;
+        }
+
         if (!CollisionFlowSand && !CollisionSand && FtCol)
         {
             this.GetComponent<Rigidbody>().useGravity = false;
@@ -429,7 +439,7 @@ public class PlayerControler : MonoBehaviour
         //流砂とかけらに触れていない時
         if (!CollisionFlowSand && !CollisionSand && !FtCol)
         {
-            this.GetComponent<Rigidbody>().useGravity = false;
+            this.GetComponent<Rigidbody>().useGravity = true;
             //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
         }
@@ -440,15 +450,7 @@ public class PlayerControler : MonoBehaviour
             this.GetComponent<Rigidbody>().useGravity = true;
         }
 
-        if (Ft_SandCol_X || SFt_SandCol_X && FtCol)
-        {
-            this.GetComponent<Rigidbody>().useGravity = true;
-        }
 
-        if (Ft_SandCol_Y || SFt_SandCol_Y && FtCol)
-        {
-            this.GetComponent<Rigidbody>().useGravity = false;
-        }
 
 
         // キャラクターの向きを進行方向に
