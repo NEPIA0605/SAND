@@ -32,7 +32,7 @@ public class VolumeChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TargetBar.value = NowVolume;
+        TargetBar.value = NowVolume;
     }
 
     //ボリュームを設定＆セーブ

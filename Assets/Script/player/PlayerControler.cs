@@ -44,6 +44,8 @@ public class PlayerControler : MonoBehaviour
     bool CollisionFlowSand;
     int PlayerMovevelo;
     bool PlayerVeloFlg;
+    bool NotJumpFlg;
+    GameObject SandUIAuraObj;                  // サンドUIのオーラ
 
     float Turn;
 
@@ -104,6 +106,7 @@ public class PlayerControler : MonoBehaviour
         PlayerYSandAddFlg = false;
         PlayerMovevelo = 0;
         PlayerVeloFlg = false;
+        NotJumpFlg = false;
 
         BlockFlg = true;
         obj = (GameObject)Resources.Load("Player_Broken");
@@ -112,7 +115,9 @@ public class PlayerControler : MonoBehaviour
         FtCol = false;
         DustParticle = GameObject.Find("DustParticle");
         DustParticle.gameObject.SetActive(false);
+        SandUIAuraObj = GameObject.Find("SandUIAura");
 
+        SandUIAuraObj.gameObject.SetActive(false);
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
         this.transform.position = StartPlayerPos;
@@ -149,7 +154,7 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
-        //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
+        Debug.Log("速度ベクトル: " + _rigidbody.velocity);
         Debug.Log("Y:" + PlayerYSandFlg);
         Debug.Log("X:" + PlayerXSandFlg);
         //Debug.Log(rb.velocity);
@@ -259,14 +264,14 @@ public class PlayerControler : MonoBehaviour
                 if (PlayerEnptyFlg == false)
                 {
                     //Y軸に下力がかかっている時
-                    if (SandMoveSp.y != 0 && !PlayerXSandFlg)
+                    if (SandMoveSp.y < 0.0f && !PlayerXSandFlg)
                     {
                         this.GetComponent<Rigidbody>().useGravity = false;
                         rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
                         PlayerYSandAddFlg = false;
                     }
                     //Y軸に上力がかかっている時
-                    if (SandMoveSp.y != 0 && !PlayerXSandFlg)
+                    if (SandMoveSp.y > 0.0f && !PlayerXSandFlg)
                     {
                         this.GetComponent<Rigidbody>().useGravity = false;
                         rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
@@ -304,6 +309,7 @@ public class PlayerControler : MonoBehaviour
                 rb.velocity = new Vector3(0, 5, 0);
                 PlayerYSandAddFlg = false;
             }
+
             //y軸に力がかかっている時
             //else
             //{
@@ -438,7 +444,6 @@ public class PlayerControler : MonoBehaviour
 
         if (PlayerVeloFlg == true)
         {
-            Debug.Log("ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ");
 
             rb.velocity = new Vector3(0, 10, 0);
             PlayerMovevelo++;
@@ -448,6 +453,16 @@ public class PlayerControler : MonoBehaviour
             PlayerVeloFlg = false;
             PlayerMovevelo = 0;
         }
+
+
+        //上向きに力がかかっている時
+        if (PlayerYSandAddFlg == true && NotJumpFlg == true && PlayerYSandFlg)
+        {
+            Debug.Log("とばなあああああああああああああああああああああああああああああ");
+            rb.velocity = new Vector3(0, 5, 0);
+            PlayerYSandAddFlg = false;
+        }
+
 
         //=========================================================================================
         //回転処理
@@ -528,6 +543,15 @@ public class PlayerControler : MonoBehaviour
             }
         }
 
+        //オーラ
+        if(PlayerTurn == true && PlayerEnptyFlg == false)
+        {
+            SandUIAuraObj.gameObject.SetActive(true);
+        }
+        else
+        {
+            SandUIAuraObj.gameObject.SetActive(false);
+        }
     }
 
     private void FixedUpdate()
@@ -774,10 +798,20 @@ public class PlayerControler : MonoBehaviour
         //    BlockFlg = true;
         //}
 
+
         //接触したオブジェクトのタグが"Block"のとき(SE用)
         if (collision.gameObject.tag == "Block")
         {
             CollisionGround = true;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        //接触したオブジェクトのタグが"NotJump"のとき
+        if (other.gameObject.tag == "NotJump")
+        {
+            NotJumpFlg = true;
         }
     }
 
@@ -847,6 +881,7 @@ public class PlayerControler : MonoBehaviour
             }
         }
 
+
         if (collision.gameObject.tag == "Block")
         {
             BlockFlg = false;
@@ -862,6 +897,10 @@ public class PlayerControler : MonoBehaviour
     //流砂から離れるときに流砂の影響を消す　　とか
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.tag == "NotJump")
+        {
+            NotJumpFlg = false;
+        }
         ////流砂
         //if (other.gameObject.tag == "QuickSand_B")
         //{
