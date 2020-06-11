@@ -170,7 +170,7 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
-        Debug.Log("速度ベクトル: " + _rigidbody.velocity);
+        //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
         Debug.Log("Y:" + PlayerYSandFlg);
         Debug.Log("X:" + PlayerXSandFlg);
         //Debug.Log(rb.velocity);
