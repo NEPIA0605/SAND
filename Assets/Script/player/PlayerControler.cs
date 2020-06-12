@@ -419,25 +419,12 @@ public class PlayerControler : MonoBehaviour
             }
         }
 
-        if (Ft_SandCol_X || SFt_SandCol_X && FtCol)
-        {
-            this.GetComponent<Rigidbody>().useGravity = true;
-        }
 
-        if (Ft_SandCol_Y || SFt_SandCol_Y && FtCol)
-        {
-            this.GetComponent<Rigidbody>().useGravity = false;
-        }
 
-        if (!CollisionFlowSand && !CollisionSand && FtCol)
-        {
-            this.GetComponent<Rigidbody>().useGravity = false;
-            //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
-            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + PlayerMoveFt;
-        }
+   
 
         //流砂とかけらに触れていない時
-        if (!CollisionFlowSand && !CollisionSand && !FtCol)
+        if (!CollisionFlowSand && !CollisionSand&& !FtCol)
         {
             this.GetComponent<Rigidbody>().useGravity = true;
             //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
@@ -449,6 +436,27 @@ public class PlayerControler : MonoBehaviour
         {
             this.GetComponent<Rigidbody>().useGravity = true;
         }
+
+        if (!CollisionFlowSand && !CollisionSand && FtCol)
+        {
+            if (Ft_SandCol_X || SFt_SandCol_X)
+            {
+                this.GetComponent<Rigidbody>().useGravity = true;
+            }
+
+            if (Ft_SandCol_Y || SFt_SandCol_Y)
+            {
+                this.GetComponent<Rigidbody>().useGravity = false;
+            }
+
+            //this.GetComponent<Rigidbody>().useGravity = false;
+            //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
+            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + PlayerMoveFt;
+        }
+
+
+
+
 
 
 
@@ -714,14 +722,14 @@ public class PlayerControler : MonoBehaviour
          
 
 
-                    // 壁の流砂・かけらが壁に触れてる・壁に触れてるかけらに乗ってる時に流されないようにする処理
-                    if ((Ft_SandCol_Y) || (Ft_WallCol) || Ft_WallColFt)
-                    {
-                        PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
-                    }
 
                 }
 
+                // 壁の流砂・かけらが壁に触れてる・壁に触れてるかけらに乗ってる時に流されないようにする処理
+                if ((Ft_SandCol_Y) || (Ft_WallCol) || Ft_WallColFt)
+                {
+                    PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+                }
 
                 // かけらの上のかけらに乗っているときの処理
                 if (SandColFt)
