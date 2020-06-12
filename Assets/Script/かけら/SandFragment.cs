@@ -90,6 +90,14 @@ public class SandFragment : MonoBehaviour
 
         }
 
+        if (SandCol_X)
+        {
+            if (SandDir.y < 0.0f)
+            {
+                SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+            }
+        }
+
         // プレイヤーの中砂がないときの処理
         if (P_SandEnpflg == true)
         {
@@ -116,12 +124,21 @@ public class SandFragment : MonoBehaviour
             Sft_WallCol = true;
             SandDir = SandMoveFtSp;
         }
-        //if (collision.gameObject.tag == "Player")
-        //{
-        //    Ft_Col = true;
-        //    SandDir = SandMoveFtSp;
-        //}
-        if (collision.gameObject.tag == "Fragment")
+        if (collision.gameObject.tag == "QuickSand_B")
+        {
+                SandRot = collision.transform.localEulerAngles;
+                if (SandRot != new Vector3(0.0f, 0.0f, 0.0f))
+                {
+                    SandCol_Y = true;
+                    SandDir = SandMoveFtSp;
+
+                }
+
+
+            
+        }
+
+            if (collision.gameObject.tag == "Fragment")
         {
             Ft_Col = true;
             SandDir = SandMoveFtSp;
@@ -162,50 +179,46 @@ public class SandFragment : MonoBehaviour
                 }
             }
 
-            // ｘ方向にしか動かないようにする
-            if (SandMoveFtSp.x != 0.0f)
-            {
-                rb.constraints =
-                RigidbodyConstraints.FreezePositionY |
-                RigidbodyConstraints.FreezePositionZ |
-                RigidbodyConstraints.FreezeRotation;
-            }
 
-            // ｚ方向にしか動かないようにする
-            if (SandMoveFtSp.z != 0.0f)
-            {
-                rb.constraints =
-                RigidbodyConstraints.FreezePositionY |
-                RigidbodyConstraints.FreezePositionX |
-                RigidbodyConstraints.FreezeRotation;
-            }
 
-            // ｙ方向にしか動かないようにする
-            if (SandMoveFtSp.y != 0.0f)
-            {
-                rb.constraints =
-                RigidbodyConstraints.FreezePositionX |
-                RigidbodyConstraints.FreezePositionZ |
-                RigidbodyConstraints.FreezeRotation;
-            }
 
             // 流砂平面かどうか
             if (SandRot == new Vector3(0.0f, 0.0f, 0.0f))
             {
                 SandCol_X = true;
 
+                // ｘ方向にしか動かないようにする
+                if (SandMoveFtSp.x != 0.0f)
+                {
+                    rb.constraints =
+                    RigidbodyConstraints.FreezePositionY |
+                    RigidbodyConstraints.FreezePositionZ |
+                    RigidbodyConstraints.FreezeRotation;
+                }
+
+                // ｚ方向にしか動かないようにする
+                if (SandMoveFtSp.z != 0.0f)
+                {
+                    rb.constraints =
+                    RigidbodyConstraints.FreezePositionY |
+                    RigidbodyConstraints.FreezePositionX |
+                    RigidbodyConstraints.FreezeRotation;
+                }
             }
             // 流砂が平面じゃない
             else
             {
                 SandCol_Y = true;
-                if (SandCol_X)
+
+                // ｙ方向にしか動かないようにする
+                if (SandMoveFtSp.y != 0.0f)
                 {
-                    if (SandMoveFtSp.y < 0.0f)
-                    {
-                        SandMoveFtSp.y = 0.0f;
-                    }
+                    rb.constraints =
+                    RigidbodyConstraints.FreezePositionX |
+                    RigidbodyConstraints.FreezePositionZ |
+                    RigidbodyConstraints.FreezeRotation;
                 }
+
             }
             this.transform.Translate(SandMoveFtSp);
         }
