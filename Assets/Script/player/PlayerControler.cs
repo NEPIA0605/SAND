@@ -741,8 +741,9 @@ public class PlayerControler : MonoBehaviour
                     {
                         PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
                     }
-
                 }
+
+
             }
         }
 
