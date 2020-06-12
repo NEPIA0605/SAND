@@ -92,7 +92,7 @@ public class OptionManager : MonoBehaviour
                     //下へ
                     OpCM.GoNext();
                 }
-                else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1") || Push_Title == true)
+                else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1") || (Push_Title == true))
                 {
                     Debug.Log("A");
                     time = true;
@@ -111,6 +111,7 @@ public class OptionManager : MonoBehaviour
                     time = false;
                     timer = 0;
                     this.gameObject.SetActive(false);
+                    button.Select();
 
                     //PushTitleBackButton();
                 }
@@ -136,6 +137,8 @@ public class OptionManager : MonoBehaviour
                         Debug.Log("C");
                         time_option = false;
                         timer = 0;
+                        this.gameObject.SetActive(false);
+                        button.Select();
                     }
 
                     break;
