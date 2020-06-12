@@ -1033,6 +1033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 156018639}
+  - component: {fileID: 156018640}
   m_Layer: 0
   m_Name: "\u88C5\u98FE\u7528"
   m_TagString: Untagged
@@ -1093,6 +1094,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &156018640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156018638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82bb9d3be05f584e99656a62b1268bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpDownMove: 1
+  Max: 2
+  Min: 1
+  MoveFrame: 60
+  MoveUp: 1
+  RotateMove: 0
+  x: 0
+  y: 0
+  z: 0
+  Speed: 1
+  Dnum: 0
 --- !u!1001 &158018701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10098,7 +10122,7 @@ MonoBehaviour:
   x: 1
   y: 0
   z: 1
-  Speed: 0.5
+  Speed: 0.25
   Dnum: 0
 --- !u!1001 &1263347283
 PrefabInstance:
@@ -12447,6 +12471,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290878191867781010, guid: 50adfa63f35af764d9a3d708b438bb7d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1966080432781902309, guid: 50adfa63f35af764d9a3d708b438bb7d,
         type: 3}
