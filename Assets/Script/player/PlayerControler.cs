@@ -679,13 +679,15 @@ public class PlayerControler : MonoBehaviour
                     PlayerMoveFt = collision.gameObject.GetComponent<SandFragment>().GetSandMoveSFtSp();
                     PlayerMoveFt *= 51;
 
-                    // 壁に触れてるかけらに乗ってる時に流されないようにする処理
-                    if (SFt_WallCol)
-                    {
-                        PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
-                    }
+
                 }
-                
+
+                // 壁に触れてるかけらに乗ってる時に流されないようにする処理
+                if ((SFt_SandCol_Y) || (SFt_WallCol))
+                {
+                    PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+                }
+
                 //if (SFt_SandCol_Y)
                 //{
                 //    transform.SetParent(collision.transform);
@@ -719,10 +721,7 @@ public class PlayerControler : MonoBehaviour
                 {
                     PlayerMoveFt = collision.gameObject.GetComponent<Fragment>().GetSandMoveFtSp();
                     PlayerMoveFt *= 51;
-         
-
-
-
+                   
                 }
 
                 // 壁の流砂・かけらが壁に触れてる・壁に触れてるかけらに乗ってる時に流されないようにする処理
@@ -951,6 +950,16 @@ public class PlayerControler : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool GetPlayerSandCol_X()
+    {
+        return PlayerXSandFlg;
+    }
+
+    public bool GetPlayerSandCol_Y()
+    {
+        return PlayerYSandFlg;
     }
 
     //プレイヤーが反転しているかどうかの変数Getter
