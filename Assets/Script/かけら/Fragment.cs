@@ -98,11 +98,14 @@ public class Fragment : MonoBehaviour
         }
 
         // 流砂に触れているときにプレイヤーが押そうとするとき流砂を超えるようにするためにポジションをあげる
-
+        if(!SandCol_Y && !SandCol_X)
+        {
             if (P_FtCol)
             {
                 this.transform.position += new Vector3(0.0f, 0.011f, 0.0f);
             }
+        }
+
        
 
         // 中砂がない時の処理
