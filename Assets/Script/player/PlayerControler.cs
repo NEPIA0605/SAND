@@ -179,13 +179,6 @@ public class PlayerControler : MonoBehaviour
 
 
         //Debug.Log(PlayerTurnAnimTime);
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            ClearFlg = true;
-        }
-
-
-
         if (Input.GetKeyDown("joystick button 6"))
         {
             // 現在のScene名を取得する
