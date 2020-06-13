@@ -42,7 +42,7 @@ public class LastClearmanager : MonoBehaviour
             //1以上になったらシーン遷移
             if (alfa >= 1.0f)
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(0);
                 LastFadeFlg = false;
             }
         }
