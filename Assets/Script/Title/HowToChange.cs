@@ -20,14 +20,14 @@ public class HowToChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HowTo.activeSelf == true)
+        if (HowToFlg)
         {
             //Bで消す
             if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
             {
                 HowToFlg = false;
                 HowToButton.Select();
-                OptMan.AsPlayOs(2);
+                OptMan.AsPlayOs(2);                
             }
         }
 

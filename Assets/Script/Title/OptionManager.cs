@@ -126,6 +126,8 @@ public class OptionManager : MonoBehaviour
                         time_option = true;
                         //戻る際のSE
                         Source.PlayOneShot(clips[2]);
+                        Debug.Log("kokoka");
+
                     }
                     else if (time_option)
                     {
@@ -273,6 +275,7 @@ public class OptionManager : MonoBehaviour
     {
         //決定の際のSE
         Source.PlayOneShot(clips[1]);
+        Debug.Log("kokoka");
 
         //決定
         option[OPT_HOWTO].GetComponent<HowToChange>().HowToOpen();

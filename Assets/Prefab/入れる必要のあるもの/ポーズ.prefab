@@ -836,6 +836,7 @@ GameObject:
   - component: {fileID: 6307932564615982255}
   - component: {fileID: 6307932564615982252}
   - component: {fileID: 8389609335371377425}
+  - component: {fileID: 1185756228855451589}
   - component: {fileID: 2906553317352963407}
   - component: {fileID: 140080356809673396}
   m_Layer: 5
@@ -992,6 +993,19 @@ MonoBehaviour:
   ReStartButton: {fileID: 6307932564615982255}
   clips:
   - {fileID: 8300000, guid: bf2dbe12210aa724d924c42f6ce745fe, type: 3}
+--- !u!114 &1185756228855451589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307932564615982242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d442a970e21d4b9bb1277da213411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SEAudioSource: {fileID: 0}
 --- !u!82 &2906553317352963407
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1291,6 +1305,7 @@ GameObject:
   - component: {fileID: 6307932564873888334}
   - component: {fileID: 6307932564873888329}
   - component: {fileID: 6729789882021832106}
+  - component: {fileID: 4436978436724750754}
   - component: {fileID: 7648623276515802851}
   m_Layer: 5
   m_Name: ResetButton
@@ -1445,7 +1460,20 @@ MonoBehaviour:
   ReturnFlg: 0
   ReStartButton: {fileID: 6307932564615982255}
   clips:
-  - {fileID: 8300000, guid: 7e336facd4de89647b904b87d19ac94f, type: 3}
+  - {fileID: 8300000, guid: bf2dbe12210aa724d924c42f6ce745fe, type: 3}
+--- !u!114 &4436978436724750754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307932564873888335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d442a970e21d4b9bb1277da213411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SEAudioSource: {fileID: 0}
 --- !u!82 &7648623276515802851
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1702,6 +1730,7 @@ GameObject:
   - component: {fileID: 6307932565227757223}
   - component: {fileID: 6307932565227757220}
   - component: {fileID: 6307932565227757222}
+  - component: {fileID: 1170740682970504747}
   - component: {fileID: 6873564197342969275}
   m_Layer: 5
   m_Name: "\u64CD\u4F5C\u8AAC\u660EUI"
@@ -1788,6 +1817,19 @@ MonoBehaviour:
   ExplanationObj: {fileID: 6307932565227757242}
   clips:
   - {fileID: 8300000, guid: 8749a2e688daa5940a0f294136f63fe7, type: 3}
+--- !u!114 &1170740682970504747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307932565227757242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d442a970e21d4b9bb1277da213411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SEAudioSource: {fileID: 0}
 --- !u!82 &6873564197342969275
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2279,6 +2321,7 @@ GameObject:
   - component: {fileID: 6307932565434914666}
   - component: {fileID: 6307932565434914667}
   - component: {fileID: 4534612565867772387}
+  - component: {fileID: 5638185277867929811}
   - component: {fileID: 6318738078848753444}
   m_Layer: 5
   m_Name: Panel
@@ -2365,6 +2408,19 @@ MonoBehaviour:
   ReStartButton: {fileID: 6307932564615982255}
   clips:
   - {fileID: 8300000, guid: 37ae7096b12868e4daf864da53167a90, type: 3}
+--- !u!114 &5638185277867929811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307932565434914665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d442a970e21d4b9bb1277da213411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SEAudioSource: {fileID: 0}
 --- !u!82 &6318738078848753444
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2706,6 +2762,7 @@ GameObject:
   - component: {fileID: 6307932565661998151}
   - component: {fileID: 6307932565661998148}
   - component: {fileID: 5486486214003028916}
+  - component: {fileID: 4239723305420397393}
   - component: {fileID: 1491167657859639185}
   m_Layer: 5
   m_Name: ExplanationButton
@@ -2860,7 +2917,20 @@ MonoBehaviour:
   ReturnFlg: 0
   ReStartButton: {fileID: 6307932564615982255}
   clips:
-  - {fileID: 8300000, guid: 7e336facd4de89647b904b87d19ac94f, type: 3}
+  - {fileID: 8300000, guid: bf2dbe12210aa724d924c42f6ce745fe, type: 3}
+--- !u!114 &4239723305420397393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307932565661998170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d442a970e21d4b9bb1277da213411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SEAudioSource: {fileID: 0}
 --- !u!82 &1491167657859639185
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3415,6 +3485,7 @@ GameObject:
   - component: {fileID: 6307932566032844383}
   - component: {fileID: 6307932566032844380}
   - component: {fileID: 2164404903017278029}
+  - component: {fileID: 5303677169448880461}
   - component: {fileID: 1750807548482662472}
   m_Layer: 5
   m_Name: ReturnStageSerectButton
@@ -3569,7 +3640,20 @@ MonoBehaviour:
   ReturnFlg: 0
   ReStartButton: {fileID: 6307932564615982255}
   clips:
-  - {fileID: 8300000, guid: 7e336facd4de89647b904b87d19ac94f, type: 3}
+  - {fileID: 8300000, guid: bf2dbe12210aa724d924c42f6ce745fe, type: 3}
+--- !u!114 &5303677169448880461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307932566032844370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d442a970e21d4b9bb1277da213411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SEAudioSource: {fileID: 0}
 --- !u!82 &1750807548482662472
 AudioSource:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ public class GAMECLEAR : MonoBehaviour
         CLEAR_BGM = true;
         Audio_time = false;
         Audio_flg_C = false;
-        Audio_length_C = 4;
+        Audio_length_C = 3;
         Audio_Clip_C = 0;
     }
 
