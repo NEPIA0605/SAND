@@ -27,7 +27,8 @@ public class HowToChange : MonoBehaviour
             {
                 HowToFlg = false;
                 HowToButton.Select();
-                OptMan.AsPlayOs(2);                
+                OptMan.AsPlayOs(2);
+                Debug.Log("kokoka");
             }
         }
 
