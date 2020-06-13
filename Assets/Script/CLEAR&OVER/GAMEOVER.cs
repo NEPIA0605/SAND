@@ -57,16 +57,16 @@ public class GAMEOVER : MonoBehaviour
 
         if ((GameOverUI.activeSelf) && (GAMEOVER_BGM) && (GameOverFlg_BGM))
         {
-            Time_Stop += Time.deltaTime;
-            if (Time_Stop > Time_Stop_Max)
-            {
+            //Time_Stop += Time.deltaTime;
+            //if (Time_Stop > Time_Stop_Max)
+            //{
                 //Debug.Log("シナモンロールCV俺");
                 Source.PlayOneShot(clips[0]);
                 GAMEOVER_BGM = false;
                 Audiotime = true;
                 Audio_Clip = Source.clip.length;
                 Time_Stop = 0;
-            }
+            //}
         }
         if (Audiotime)
         {
